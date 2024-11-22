@@ -35,13 +35,13 @@ void Transaction::applyTransaction(Account* account) const {
     applyTransaction(account->getParent());
 }
 
-// Validate transaction
 bool Transaction::isValid(const Account* account) const {
     if (debitOrCredit == 'C' && account->getBalance() < amount) {
         return false;
     }
     return true;
 }
+
 
 // Input and output operators
 istream& operator>>(istream& in, Transaction& transaction) {
