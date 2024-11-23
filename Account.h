@@ -22,6 +22,10 @@ public:
     // Constructor
     Account(int accountNumber, const std::string& description, double initialBalance = 0.0);
 
+    Account(const Account& other);
+
+    Account& operator=(const Account& other);
+
     // Destructor
     ~Account();
 
@@ -42,16 +46,11 @@ public:
     void addTransaction(Transaction* transaction);
     void removeTransaction(int transactionID);
 
-    // Report generation
-    void printReport() const;
-
-    // File I/O for saving and loading accounts
-    void saveToFile(const std::string& filename) const;
-    void loadFromFile(const std::string& filename);
-
     // Overloaded input and output operators
     friend std::istream& operator>>(std::istream& in, Account& account);
     friend std::ostream& operator<<(std::ostream& out, const Account& account);
+
+    void saveToFile(const std::string &filename) const;
 };
 
 #endif // ACCOUNT_H

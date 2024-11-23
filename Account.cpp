@@ -42,14 +42,25 @@ void Account::setParent(Account* parentAccount) { parent = parentAccount; }
 // Update balance
 void Account::updateBalance(double amount) { balance += amount; }
 
-// Add a transaction
 void Account::addTransaction(Transaction* transaction) {
     if (!transaction->isValid(this)) {
         throw invalid_argument("Transaction is invalid: Insufficient balance for credit transaction.");
     }
+
+    // Add the transaction to this account
     transactions.push_back(transaction);
-    transaction->applyTransaction(this); // Apply recursively to parent accounts
+
+    // Calculate the adjustment amount
+    double adjustment = (transaction->getDebitOrCredit() == 'D') ? transaction->getAmount() : -transaction->getAmount();
+
+    // Update the balance of this account and propagate to parents
+    Account* current = this;
+    while (current) {
+        current->updateBalance(adjustment);
+        current = current->getParent();
+    }
 }
+
 
 // Remove a transaction
 void Account::removeTransaction(int transactionID) {
@@ -74,67 +85,6 @@ void Account::removeTransaction(int transactionID) {
     }
 }
 
-// Print a detailed report
-void Account::printReport() const {
-    cout << "Account Number: " << accountNumber << "\n"
-         << "Description: " << description << "\n"
-         << "Balance: " << fixed << setprecision(2) << balance << "\n"
-         << "Transactions:\n";
-
-    for (const Transaction* transaction : transactions) {
-        cout << *transaction << "\n";
-    }
-}
-
-void Account::saveToFile(const string& filename) const {
-    ofstream file(filename, ios::app); // Use append mode for hierarchical saving
-    if (!file) {
-        throw runtime_error("Failed to open file for saving.");
-    }
-
-    file << setw(6) << accountNumber << " "         // Account number
-         << setw(30) << description.substr(0, 30) << " " // Truncated description
-         << fixed << setprecision(2) << balance << "\n"; // Balance
-
-    for (const Transaction* transaction : transactions) {
-        file << "  " << *transaction << "\n"; // Indent transactions
-    }
-
-    file.close();
-}
-void Account::loadFromFile(const string& filename) {
-    ifstream file(filename);
-    if (!file) {
-        throw runtime_error("Failed to open file for loading.");
-    }
-
-    transactions.clear(); // Clear existing transactions
-    string line;
-    bool isTransaction = false;
-
-    while (getline(file, line)) {
-        stringstream ss(line);
-        if (line[0] != ' ') { // Account line
-            isTransaction = false;
-            ss >> accountNumber;
-            ss.ignore(); // Skip whitespace
-            getline(ss, description, ' ');
-            ss >> balance;
-        } else { // Transaction line
-            isTransaction = true;
-            int id;
-            double amt;
-            char dc;
-            string relatedAccount;
-            ss >> id >> amt >> dc >> relatedAccount;
-
-            Transaction* transaction = new Transaction(id, amt, dc, relatedAccount);
-            transactions.push_back(transaction);
-        }
-    }
-
-    file.close();
-}
 
 
 // Overloaded input operator
@@ -158,4 +108,51 @@ ostream& operator<<(ostream& out, const Account& account) {
         out << "  " << *transaction << "\n";
     }
     return out;
+}
+// Copy Constructor
+Account::Account(const Account& other)
+        : accountNumber(other.accountNumber),
+          description(other.description),
+          balance(other.balance),
+          parent(other.parent)
+{
+    for (const auto& t : other.transactions) {
+        transactions.push_back(new Transaction(*t)); // Deep copy of transactions
+    }
+}
+
+// Assignment Operator
+Account& Account::operator=(const Account& other) {
+    if (this != &other) {
+        accountNumber = other.accountNumber;
+        description = other.description;
+        balance = other.balance;
+        parent = other.parent;
+
+        // Clear old transactions
+        for (auto t : transactions) {
+            delete t;
+        }
+        transactions.clear();
+
+        // Deep copy transactions from the other account
+        for (const auto& t : other.transactions) {
+            transactions.push_back(new Transaction(*t));
+        }
+    }
+    return *this;
+}
+void Account::saveToFile(const string& filename) const {
+    ofstream file(filename, ios::app);
+    if (!file) {
+        throw runtime_error("Failed to open file for saving.");
+    }
+
+    file << setw(6) << accountNumber << " "
+         << std::quoted(description) << " "
+         << fixed << setprecision(2) << balance << "\n";
+
+    for (const Transaction* transaction : transactions) {
+        file << "  " << *transaction << "\n";
+    }
 }
