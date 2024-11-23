@@ -4,11 +4,11 @@
 
 using namespace std;
 
-// Predefined file paths
-const string ORIGINAL_FILE = "C://Users//lucas//Desktop//uni//ads//CSIS217 Project Fall 24-25//accountswithspace.txt";
-const string UPDATED_FILE = "C://Users//lucas//Desktop//uni//ads//CSIS217 Project Fall 24-25//updatedAccounts.txt";
+// Predefined file paths for loading and saving account data
+const string ORIGINAL_FILE = "C:\\CSIS217\\accountswithspace.txt";
+const string UPDATED_FILE = "C:\\CSIS217\\accountswithspace2.txt";
 
-// Function to display the menu
+// Displays the main menu to the user
 void displayMenu() {
     cout << "\n======================================" << endl;
     cout << " Lebanese Chart of Accounts - Menu    " << endl;
@@ -23,31 +23,32 @@ void displayMenu() {
     cout << "======================================" << endl;
 }
 
-// Main function
+// Main function: Entry point of the program
 int main() {
-    ForestTree forestTree; // Create the ForestTree instance
-    int choice;
+    ForestTree forestTree; // Create the ForestTree instance to manage accounts
+    int choice; // Variable to store user menu selection
 
-    // Automatically load from UPDATED_FILE if it exists, otherwise load ORIGINAL_FILE
+    // Load accounts data from the UPDATED_FILE if it exists, otherwise from ORIGINAL_FILE
     ifstream updatedFile(UPDATED_FILE);
     if (updatedFile) {
         try {
             forestTree.buildFromFile(UPDATED_FILE);
             cout << "Accounts successfully loaded from " << UPDATED_FILE << "." << endl;
-        } catch (const exception& e) {
+        } catch (const exception &e) {
             cerr << "Error loading updated accounts: " << e.what() << endl;
-            return 1; // Exit if updated file cannot be loaded
+            return 1; // Exit if the updated file cannot be loaded
         }
     } else {
         try {
             forestTree.buildFromFile(ORIGINAL_FILE);
             cout << "Accounts successfully loaded from " << ORIGINAL_FILE << "." << endl;
-        } catch (const exception& e) {
+        } catch (const exception &e) {
             cerr << "Error loading original accounts: " << e.what() << endl;
-            return 1; // Exit if original file cannot be loaded
+            return 1; // Exit if the original file cannot be loaded
         }
     }
 
+    // Main menu loop
     do {
         displayMenu();
         cout << "Enter your choice: ";
@@ -58,10 +59,11 @@ int main() {
                 int accountNumber;
                 string description;
                 double initialBalance;
+
                 cout << "Enter account number: ";
                 cin >> accountNumber;
                 cout << "Enter description: ";
-                cin.ignore();
+                cin.ignore(); // Ignore trailing newline
                 getline(cin, description);
                 cout << "Enter initial balance: ";
                 cin >> initialBalance;
@@ -72,6 +74,7 @@ int main() {
             }
             case 2: { // Remove an account
                 int accountNumber;
+
                 cout << "Enter the account number to remove: ";
                 cin >> accountNumber;
 
@@ -97,7 +100,7 @@ int main() {
                     Transaction transaction(transactionID, amount, type, "");
                     forestTree.addTransaction(accountNumber, transaction);
                     cout << "Transaction added successfully." << endl;
-                } catch (const exception& e) {
+                } catch (const exception &e) {
                     cerr << "Error: " << e.what() << endl;
                 }
                 break;
@@ -113,18 +116,18 @@ int main() {
                 try {
                     forestTree.removeTransaction(accountNumber, transactionID);
                     cout << "Transaction removed successfully." << endl;
-                } catch (const exception& e) {
+                } catch (const exception &e) {
                     cerr << "Error: " << e.what() << endl;
                 }
                 break;
             }
-            case 5: { // Search for an account
+            case 5: { // Search for an account by number
                 int accountNumber;
 
                 cout << "Enter the account number to search for: ";
                 cin >> accountNumber;
 
-                Account* account = forestTree.searchAccount(accountNumber);
+                Account *account = forestTree.searchAccount(accountNumber);
                 if (account) {
                     cout << "Account found:" << endl;
                     cout << *account << endl;
@@ -133,7 +136,7 @@ int main() {
                 }
                 break;
             }
-            case 6: { // Print the chart of accounts
+            case 6: { // Print the chart of accounts to a temporary file and display it
                 try {
                     string tempFile = "current_chart_of_accounts.txt";
                     forestTree.printTree(tempFile);
@@ -141,27 +144,27 @@ int main() {
 
                     ifstream file(tempFile);
                     if (file) {
-                        cout << file.rdbuf(); // Print file content to console
+                        cout << file.rdbuf(); // Display file contents to the console
                         file.close();
                     }
-                } catch (const exception& e) {
+                } catch (const exception &e) {
                     cerr << "Error: " << e.what() << endl;
                 }
                 break;
             }
-            case 7: { // Save changes to a new file and exit
+            case 7: { // Save changes to UPDATED_FILE and exit
                 try {
                     forestTree.printTree(UPDATED_FILE);
                     cout << "All changes saved to " << UPDATED_FILE << ". Goodbye!" << endl;
-                } catch (const exception& e) {
+                } catch (const exception &e) {
                     cerr << "Error: " << e.what() << endl;
                 }
                 break;
             }
-            default:
+            default: // Invalid menu choice
                 cout << "Invalid choice. Please enter a valid option." << endl;
         }
-    } while (choice != 7);
+    } while (choice != 7); // Exit when the user selects option 7
 
     return 0;
 }

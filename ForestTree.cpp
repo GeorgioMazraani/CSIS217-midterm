@@ -4,52 +4,51 @@
 #include <iomanip>
 #include <algorithm>
 
-// Constructor
+// Constructor for initializing an empty ForestTree
 ForestTree::ForestTree() : root(nullptr) {}
 
-// Destructor
+// Destructor for cleaning up the ForestTree and releasing memory
 ForestTree::~ForestTree() {
-    for (auto& pair : accountMap) {
+    for (auto &pair: accountMap) {
         deleteTree(pair.second);
     }
 }
 
-// Helper to recursively delete accounts
-void ForestTree::deleteTree(Account* node) {
+// Helper function to recursively delete accounts
+void ForestTree::deleteTree(Account *node) {
     if (node) {
         delete node;
     }
 }
 
-// Initialize an empty ForestTree
+// Initializes an empty ForestTree by clearing all accounts and resetting root
 void ForestTree::initialize() {
-    for (auto& pair : accountMap) {
+    for (auto &pair: accountMap) {
         deleteTree(pair.second);
     }
     accountMap.clear();
     root = nullptr;
 }
 
-// Helper functions for parsing
+// Helper namespace for utility functions used in ForestTree operations
 namespace {
-    bool isNumeric(const std::string& str) {
+    // Checks if a string is numeric
+    bool isNumeric(const std::string &str) {
         return !str.empty() && str.find_first_not_of("0123456789") == std::string::npos;
     }
 
-    std::string cleanDescription(const std::string& desc) {
+    // Cleans account description by removing unwanted characters and trimming spaces
+    std::string cleanDescription(const std::string &desc) {
         std::string cleaned = desc;
-        // Remove quotes and parentheses
         cleaned.erase(std::remove(cleaned.begin(), cleaned.end(), '"'), cleaned.end());
         cleaned.erase(std::remove(cleaned.begin(), cleaned.end(), '('), cleaned.end());
         cleaned.erase(std::remove(cleaned.begin(), cleaned.end(), ')'), cleaned.end());
-
-        // Trim spaces
         while (!cleaned.empty() && std::isspace(cleaned.front())) cleaned.erase(0, 1);
         while (!cleaned.empty() && std::isspace(cleaned.back())) cleaned.pop_back();
-
         return cleaned;
     }
 
+    // Determines the parent account number based on the current account number
     int findParentNumber(int accountNumber) {
         std::string numStr = std::to_string(accountNumber);
         if (numStr.length() <= 1) return 0;
@@ -57,8 +56,8 @@ namespace {
     }
 }
 
-// Build the chart of accounts from file
-void ForestTree::buildFromFile(const std::string& filename) {
+// Builds the chart of accounts by reading from a file
+void ForestTree::buildFromFile(const std::string &filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open file: " + filename);
@@ -67,14 +66,14 @@ void ForestTree::buildFromFile(const std::string& filename) {
     std::string line;
     std::vector<std::string> lines;
 
-    // First, read all lines and clean them
+    // Read and clean lines from the file
     while (std::getline(file, line)) {
         if (!line.empty()) {
             lines.push_back(line);
         }
     }
 
-    // Process lines
+    // Process each line to build the accounts
     for (size_t i = 0; i < lines.size(); i++) {
         std::istringstream iss(lines[i]);
         std::string firstToken;
@@ -87,7 +86,7 @@ void ForestTree::buildFromFile(const std::string& filename) {
         double balance = 0.0;
         bool foundBalance = false;
 
-        // Read the rest of the current line
+        // Extract description and balance
         std::string word;
         while (iss >> word) {
             try {
@@ -100,7 +99,7 @@ void ForestTree::buildFromFile(const std::string& filename) {
             }
         }
 
-        // If we haven't found the balance, look ahead to subsequent lines
+        // If no balance found, look at subsequent lines
         if (!foundBalance) {
             size_t j = i + 1;
             while (j < lines.size()) {
@@ -113,94 +112,66 @@ void ForestTree::buildFromFile(const std::string& filename) {
                 std::string remainingLine;
                 std::getline(nextIss, remainingLine);
 
-                // Check if this line has a balance at the end
                 std::istringstream remainingStream(remainingLine);
-                std::string word;
-                std::string tempDesc;
                 while (remainingStream >> word) {
                     try {
                         balance = std::stod(word);
                         foundBalance = true;
                         break;
                     } catch (...) {
-                        if (!tempDesc.empty()) tempDesc += " ";
-                        tempDesc += word;
+                        if (!description.empty()) description += " ";
+                        description += word;
                     }
-                }
-
-                if (!tempDesc.empty()) {
-                    if (!description.empty()) description += " ";
-                    description += tempDesc;
                 }
 
                 if (foundBalance) break;
                 j++;
             }
-            i = j - 1;  // Update the outer loop counter
+            i = j - 1; // Adjust the loop counter
         }
 
-        // Clean up the description and add the account
+        // Add the cleaned account to the tree
         description = cleanDescription(description);
         try {
             addAccount(accountNumber, description, balance);
-        } catch (const std::exception& e) {
+        } catch (const std::exception &e) {
             std::cerr << "Error adding account " << accountNumber << ": " << e.what() << std::endl;
         }
     }
 }
 
-void ForestTree::addAccount(int accountNumber, const std::string& description, double initialBalance) {
-    std::string accountStr = std::to_string(accountNumber);
-
-    // Handle special cases for account numbers with business unit identifiers
-    if (accountStr.find("181") == 0 || accountStr.find("188") == 0) {
-        accountNumber = std::stoi(accountStr.substr(0, 3));
-    }
-    // Remove business unit identifiers (A, B) from account numbers
-    else {
-        size_t len = accountStr.length();
-        if (len > 5) {
-            accountNumber = std::stoi(accountStr.substr(0, 5));
-        }
-    }
-
-    if (accountNumber <= 0 || accountNumber > 99999) {
-        throw std::invalid_argument("Account number must be between 1 and 99999");
-    }
-
+// Adds an account to the ForestTree
+void ForestTree::addAccount(int accountNumber, const std::string &description, double initialBalance) {
     if (accountMap.find(accountNumber) != accountMap.end()) {
-        // Update existing account instead of throwing an error
-        Account* existingAccount = accountMap[accountNumber];
+        Account *existingAccount = accountMap[accountNumber];
         existingAccount->updateBalance(initialBalance);
         return;
     }
 
-    Account* newAccount = new Account(accountNumber, description, initialBalance);
-
+    Account *newAccount = new Account(accountNumber, description, initialBalance);
     int parentNumber = findParentNumber(accountNumber);
-    if (parentNumber > 0) {
-        auto parentIt = accountMap.find(parentNumber);
-        if (parentIt != accountMap.end()) {
-            newAccount->setParent(parentIt->second);
-        }
+
+    if (parentNumber > 0 && accountMap.find(parentNumber) != accountMap.end()) {
+        newAccount->setParent(accountMap[parentNumber]);
     }
 
     accountMap[accountNumber] = newAccount;
 }
 
+// Removes an account by its number
 void ForestTree::removeAccount(int accountNumber) {
     auto it = accountMap.find(accountNumber);
     if (it == accountMap.end()) {
         throw std::invalid_argument("Account not found");
     }
 
-    Account* account = it->second;
+    delete it->second;
     accountMap.erase(it);
-    delete account;
 }
 
-void ForestTree::addTransaction(int accountNumber, const Transaction& transaction) {
-    Account* account = searchAccount(accountNumber);
+// Adds a transaction to an account
+void ForestTree::addTransaction(int accountNumber, const Transaction &transaction) {
+    Account *account = searchAccount(accountNumber);
     if (!account) {
         throw std::invalid_argument("Account not found");
     }
@@ -208,8 +179,9 @@ void ForestTree::addTransaction(int accountNumber, const Transaction& transactio
     account->addTransaction(new Transaction(transaction));
 }
 
+// Removes a transaction from an account
 void ForestTree::removeTransaction(int accountNumber, int transactionID) {
-    Account* account = searchAccount(accountNumber);
+    Account *account = searchAccount(accountNumber);
     if (!account) {
         throw std::invalid_argument("Account not found");
     }
@@ -217,43 +189,45 @@ void ForestTree::removeTransaction(int accountNumber, int transactionID) {
     account->removeTransaction(transactionID);
 }
 
-Account* ForestTree::searchAccount(int accountNumber) {
+// Searches for an account by its number
+Account *ForestTree::searchAccount(int accountNumber) {
     auto it = accountMap.find(accountNumber);
     return (it != accountMap.end()) ? it->second : nullptr;
 }
 
-void ForestTree::printTree(const std::string& filename) {
+// Prints the entire ForestTree to a file
+void ForestTree::printTree(const std::string &filename) {
     std::ofstream file(filename);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open file for writing: " + filename);
     }
 
-    for (const auto& pair : accountMap) {
-        if (!pair.second->getParent()) {  // Start with root level accounts
+    for (const auto &pair: accountMap) {
+        if (!pair.second->getParent()) {
             printTreeRecursive(pair.second, file, 0);
         }
     }
 }
 
-void ForestTree::printTreeRecursive(Account* account, std::ofstream& file, int indent) {
+// Recursively prints an account and its children
+void ForestTree::printTreeRecursive(Account *account, std::ofstream &file, int indent) {
     if (!account) return;
 
     file << std::string(indent * 2, ' ')
          << account->getAccountNumber() << " "
-         << std::setw(30) << std::left << account->getDescription().substr(0, 30)
-         << std::fixed << std::setprecision(2) << account->getBalance() << std::endl;
+         << std::setw(30) << std::left << account->getDescription()
+         << std::fixed << std::setprecision(2) << account->getBalance() << "\n";
 
-    // Find and print children
-    for (const auto& pair : accountMap) {
-        Account* childAccount = pair.second;
-        if (childAccount->getParent() == account) {
-            printTreeRecursive(childAccount, file, indent + 1);
+    for (const auto &pair: accountMap) {
+        if (pair.second->getParent() == account) {
+            printTreeRecursive(pair.second, file, indent + 1);
         }
     }
 }
 
-void ForestTree::printAccountDetails(int accountNumber, const std::string& filename) {
-    Account* account = searchAccount(accountNumber);
+// Prints the details of a specific account to a file
+void ForestTree::printAccountDetails(int accountNumber, const std::string &filename) {
+    Account *account = searchAccount(accountNumber);
     if (!account) {
         throw std::invalid_argument("Account not found");
     }
@@ -269,8 +243,7 @@ void ForestTree::printAccountDetails(int accountNumber, const std::string& filen
          << "Balance: " << std::fixed << std::setprecision(2) << account->getBalance() << "\n\n"
          << "Transactions:\n";
 
-    const auto& transactions = account->getTransactions();
-    for (const Transaction* transaction : transactions) {
+    for (const Transaction *transaction: account->getTransactions()) {
         file << "  " << *transaction << "\n";
     }
 }
