@@ -1,0 +1,9 @@
+# Ignore CMake files
+CMakeLists.txt
+cmake-build-debug/
+cmake-build-release/
+*.cmake
+
+# Ignore all other files except headers and source files
+!*.h
+!*.cpp
