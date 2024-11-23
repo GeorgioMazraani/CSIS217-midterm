@@ -3,6 +3,9 @@ CMakeLists.txt
 cmake-build-debug/
 cmake-build-release/
 *.cmake
+# Ignore .idea directory
+.idea/
+
 
 # Ignore all other files except headers and source files
 !*.h
