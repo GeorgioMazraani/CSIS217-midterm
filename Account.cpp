@@ -86,21 +86,22 @@ void Account::printReport() const {
     }
 }
 
-// Save account to a file
 void Account::saveToFile(const string& filename) const {
-    ofstream file(filename);
+    ofstream file(filename, ios::app); // Use append mode for hierarchical saving
     if (!file) {
         throw runtime_error("Failed to open file for saving.");
     }
 
-    file << accountNumber << "\n" << description << "\n" << balance << "\n";
+    file << setw(6) << accountNumber << " "         // Account number
+         << setw(30) << description.substr(0, 30) << " " // Truncated description
+         << fixed << setprecision(2) << balance << "\n"; // Balance
+
     for (const Transaction* transaction : transactions) {
-        file << *transaction << "\n";
+        file << "  " << *transaction << "\n"; // Indent transactions
     }
+
     file.close();
 }
-
-// Load account from a file
 void Account::loadFromFile(const string& filename) {
     ifstream file(filename);
     if (!file) {
@@ -108,30 +109,33 @@ void Account::loadFromFile(const string& filename) {
     }
 
     transactions.clear(); // Clear existing transactions
-
-    file >> accountNumber;
-    file.ignore();
-    getline(file, description);
-    file >> balance;
-
     string line;
+    bool isTransaction = false;
+
     while (getline(file, line)) {
-        if (!line.empty()) {
-            stringstream ss(line);
+        stringstream ss(line);
+        if (line[0] != ' ') { // Account line
+            isTransaction = false;
+            ss >> accountNumber;
+            ss.ignore(); // Skip whitespace
+            getline(ss, description, ' ');
+            ss >> balance;
+        } else { // Transaction line
+            isTransaction = true;
             int id;
             double amt;
             char dc;
-            string account;
+            string relatedAccount;
+            ss >> id >> amt >> dc >> relatedAccount;
 
-            // Extract transaction details
-            ss >> id >> amt >> dc >> account;
-            Transaction* transaction = new Transaction(id, amt, dc, account);
+            Transaction* transaction = new Transaction(id, amt, dc, relatedAccount);
             transactions.push_back(transaction);
         }
     }
 
     file.close();
 }
+
 
 // Overloaded input operator
 istream& operator>>(istream& in, Account& account) {
@@ -145,15 +149,13 @@ istream& operator>>(istream& in, Account& account) {
     return in;
 }
 
-// Overloaded output operator
 ostream& operator<<(ostream& out, const Account& account) {
-    out << "Account Number: " << account.accountNumber << "\n"
-        << "Description: " << account.description << "\n"
-        << "Balance: " << fixed << setprecision(2) << account.balance << "\n"
-        << "Transactions:\n";
+    out << setw(6) << account.accountNumber << " "
+        << setw(30) << account.description.substr(0, 30) << " "
+        << fixed << setprecision(2) << account.balance << "\n";
 
     for (const Transaction* transaction : account.transactions) {
-        out << *transaction << "\n";
+        out << "  " << *transaction << "\n";
     }
     return out;
 }

@@ -49,6 +49,8 @@ public:
 
     // Print account details
     void printAccountDetails(int accountNumber, const std::string& filename);
+
+    void printTreeRecursive(Account *account, ofstream &file, int indent);
 };
 
 #endif // CSIS217_PROJECT_FORESTTREE_H
