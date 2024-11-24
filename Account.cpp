@@ -132,6 +132,7 @@ istream &operator>>(istream &in, Account &account) {
 }
 
 // Overloaded output operator: Writes account details to the output stream
+// Overloaded output operator: Writes account details to the output stream
 ostream &operator<<(ostream &out, const Account &account) {
     // Format the account number and description
     out << account.accountNumber << " ";
@@ -148,10 +149,12 @@ ostream &operator<<(ostream &out, const Account &account) {
 
     // Output the transactions
     for (const Transaction *transaction : account.transactions) {
-        out << "  " << *transaction << "\n";
+        out << "\t" << *transaction << "\n"; // Assuming Transaction has operator<< defined
     }
+
     return out;
 }
+
 
 
 // Copy constructor: Creates a deep copy of the given Account object

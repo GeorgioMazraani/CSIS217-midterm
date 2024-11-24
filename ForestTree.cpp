@@ -35,9 +35,21 @@ namespace {
     // Determines the parent account number based on the current account number
     int findParentNumber(int accountNumber) {
         std::string numStr = std::to_string(accountNumber);
-        if (numStr.length() <= 1) return 0;
+
+        // If the account number is single-digit or invalid, return 0 (no parent)
+        if (numStr.length() <= 1) {
+            return 0;
+        }
+
+        // For five-digit accounts, trim one digit to find the parent
+        if (numStr.length() == 5) {
+            return std::stoi(numStr.substr(0, 4));
+        }
+
+        // For other lengths, trim the last digit
         return std::stoi(numStr.substr(0, numStr.length() - 1));
     }
+
 
     // Checks if a string is numeric
     bool isNumeric(const std::string &str) {
@@ -91,10 +103,8 @@ void ForestTree::buildFromFile(const std::string &filename) {
         std::string firstToken;
         iss >> firstToken;
 
-        // Check if the first token is numeric (account number)
-        if (std::isdigit(firstToken[0])) {
-            // If already reading a description, finalize the previous account
-            if (readingDescription) {
+        if (std::isdigit(firstToken[0])) { // Starts with a digit (account number)
+            if (readingDescription) { // Finalize the previous account
                 description = cleanDescription(description);
                 try {
                     addAccount(accountNumber, description, balance);
@@ -104,27 +114,25 @@ void ForestTree::buildFromFile(const std::string &filename) {
                 description.clear();
             }
 
-            // Parse the account number
+            // Parse account number and description/balance
             try {
                 accountNumber = std::stoi(firstToken);
             } catch (const std::exception &) {
-                std::cerr << "Error parsing account number in line: " << line << std::endl;
+                std::cerr << "Error parsing account number: " << line << std::endl;
                 continue;
             }
 
-            // Extract the rest of the line
+            // Extract the remaining line for description/balance
             std::getline(iss, line);
             size_t lastSpace = line.find_last_of(' ');
 
             if (lastSpace != std::string::npos) {
                 std::string potentialBalance = line.substr(lastSpace + 1);
                 try {
-                    // Attempt to parse the balance
-                    balance = std::stod(potentialBalance);
-                    description = line.substr(0, lastSpace); // Description is the remaining part
+                    balance = std::stod(potentialBalance); // Parse balance
+                    description = line.substr(0, lastSpace);
                 } catch (const std::exception &) {
-                    // Treat the entire line as description if parsing balance fails
-                    description = line;
+                    description = line; // Treat entire line as description
                     balance = 0.0;
                 }
             } else {
@@ -133,13 +141,12 @@ void ForestTree::buildFromFile(const std::string &filename) {
             }
 
             readingDescription = true;
-        } else if (readingDescription) {
-            // If line doesn't start with a number, append it to the description
+        } else if (readingDescription) { // Append additional description lines
             description += " " + line;
         }
     }
 
-    // Add the last account if reading description
+    // Add the last account if still reading
     if (readingDescription) {
         description = cleanDescription(description);
         try {
@@ -149,6 +156,7 @@ void ForestTree::buildFromFile(const std::string &filename) {
         }
     }
 }
+
 
 
 // Adds an account to the ForestTree
@@ -230,17 +238,20 @@ void ForestTree::printTree(const std::string &filename) {
 void ForestTree::printTreeRecursive(Account *account, std::ofstream &file, int indent) {
     if (!account) return;
 
+    // Print account details with indentation
     file << std::string(indent * 2, ' ')
          << account->getAccountNumber() << " "
          << std::setw(30) << std::left << account->getDescription() << " "
          << std::fixed << std::setprecision(2) << account->getBalance() << "\n";
 
-    for (const auto &pair: accountMap) {
+    // Recursively print child accounts
+    for (const auto &pair : accountMap) {
         if (pair.second->getParent() == account) {
             printTreeRecursive(pair.second, file, indent + 1);
         }
     }
 }
+
 
 // Prints the details of a specific account to a file
 void ForestTree::printAccountDetails(int accountNumber, const std::string &filename) {

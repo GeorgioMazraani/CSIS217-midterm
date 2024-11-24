@@ -141,10 +141,8 @@
 20121 Prospecting costs 0
 20122 Advertising expenses 0
 2013 "Increase in capital and various transactions costs (mergers,  0
-demergers, changes of legal form)" 0
 203 Research and development costs 0
 205 "Concessions and similar rights, patents, licenses, trademarks,  0
-processes, IT solutions, rights and similar assets" 0
 206 Leasehold rights 0
 207 Goodwill 0
 208 Other intangible fixed assets 0
@@ -193,7 +191,6 @@ processes, IT solutions, rights and similar assets" 0
 2154 Industrial machinery and equipment 0
 2155 Industrial tools 0
 2157 "Fixtures and fittings for industrial machinery, equipment and  0
-tools" 0
 218 Other tangible fixed assets 0
 2181 "Various installations, fixtures and fittings" 0
 2182 Transport equipment 0
@@ -268,7 +265,6 @@ tools" 0
 2801 Formation expenses (same breakdown as account 201) 0
 2803 Research and development costs 0
 2805 "Concessions and similar rights, patents, licenses, trademarks,  0
-processes, IT solutions, rights and similar assets" 0
 2807 Goodwill 0
 2808 Other intangible fixed assets 0
 28081 Accumulated amortization of merger deficit on intangible assets 0
@@ -277,7 +273,6 @@ processes, IT solutions, rights and similar assets" 0
 2813 Constructions (same breakdown as account 213) 0
 2814 Constructions on third party's land (same breakdown as account 214) 0
 2815 "Technical installations, industrial machinery, equipment and tools  0
-(same breakdown as account 215)" 0
 2818 Other tangible fixed assets (same breakdown as account 218) 0
 28187 Accumulated amortization of merger deficit on tangible assets 0
 282 Accumulated amortization and depreciation of concession fixed assets 0
@@ -289,22 +284,18 @@ processes, IT solutions, rights and similar assets" 0
 2908 Other intangible fixed assets 0
 29081 Provisions for impairment of merger deficit on intangible assets 0
 291 Provisions for impairment of tangible fixed assets (same breakdown as  0
-account 21) 0
 29187 Provisions for impairment of concession fixed assets 0
 292 Provisions for impairment of concession fixed assets 0
 293 Provisions for impairment of fixed assets in progress 0
 2931 Tangible fixed assets in progress 0
 2932 Intangible fixed assets in progress 0
 296 Provisions for impairment of equity interests and receivables from  0
-equity interests 0
 2961 Equity investments 0
 2966 Other types of equity interests 0
 2967 Receivables from equity interests (same breakdown as account 267) 0
-2968 Other receivables from joint ventures (same breakdown as account  0
-268) 0
+2968 Other receivables from joint ventures (same breakdown as account)  0
 297 Provisions for impairment of other financial fixed assets 0
 2971 Long-term securities other than portfolio investments (same  0
-breakdown as account 271) 0
 2972 Long-term debt securities (same breakdown as account 272) 0
 2973 Portfolio investments 0
 2974 Loans (same breakdown as account 274) 0
@@ -356,13 +347,10 @@ breakdown as account 271) 0
 3585 Scrap 0
 3586 Recovered materials 0
 36 "Account to be opened, if applicable, as ""Inventory from fixed  0
-assets""" 0
 37 Inventory of goods for resale 0
 371 Goods for resale (or range) A 0
 372 Goods for resale (or range) B 0
 38 "When the general accounting is used by the entity in the perpetual  0
-inventory system, account 38 may be used to record inventory in transit,  0
-on consignment, or in storage." 0
 39 Provisions for impairment of inventory and work in progress 0
 391 Provisions for impairment of raw materials (and supplies) 0
 3911 Materials (or range) A 0
@@ -406,7 +394,6 @@ on consignment, or in storage." 0
 40971 Operating suppliers 0
 40974 Fixed assets suppliers 0
 4098 "Allowances, discounts, rebates and other credit notes not yet  0
-received" 0
 41 Customers - Trade receivables and related accounts 0
 410 Customers - Trade receivables and related accounts 0
 411 Customers 0
@@ -456,9 +443,7 @@ received" 0
 4424 Debenture holders 0
 4425 Partners 0
 443 "Specific transactions with the State, public authorities and  0
-international organizations" 0
 4431 Receivables from the State due to the repeal of the one-month delay  0
-rule in V.A.T. 0
 4438 Accrued interest on receivables recorded in account 4431 0
 444 State - Income taxes 0
 445 State - Taxes on turnover 0
@@ -535,7 +520,6 @@ rule in V.A.T. 0
 47861 Valuation differences on derivative financial instruments - Assets 0
 47862 Valuation differences on tokens held - Assets 0
 47871 Valuation differences on derivative financial instruments -  0
-Liabilities 0
 47872 Valuation differences on tokens held - Liabilities 0
 48 Accruals and deferrals 0
 481 Deferred expenses 0
@@ -561,9 +545,7 @@ Liabilities 0
 501 Shares in affiliated companies 0
 502 Own shares 0
 5021 Shares to be allocated to employees and assigned to a specific  0
-employee share ownership plan 0
 5022 Shares bought back to increase or maintain their value or available  0
-for allocation to employees 0
 503 Shares 0
 5031 Listed shares 0
 5035 Unlisted shares 0
@@ -648,7 +630,6 @@ for allocation to employees 0
 6071 Goods for resale (or range) A 0
 6072 Goods for resale (or range) B 0
 608 "Account reserved, if applicable, for the summary of ancillary  0
-purchase costs" 0
 609 "Allowances, discounts, rebates received on purchases of :" 0
 6091 raw materials (and supplies) 0
 6092 other inventoried supplies 0
@@ -661,7 +642,6 @@ purchase costs" 0
 6031 Changes in inventory of raw materials (and supplies) 0
 6032 Changes in inventory of other consumables 0
 6037 Changes in inventory of goods for resale 0
-61/62 Other external expenses 0
 61 External services 0
 611 Subcontracting 0
 612 Lease payments 0
@@ -748,7 +728,6 @@ purchase costs" 0
 6333 Employer participation to lifelong professional training 0
 6334 Contribution for housing construction 0
 6335 Payment in full discharge eligible for the apprenticeship tax  0
-exemption 0
 6338 Other 0
 635 "Other taxes, duties and similar payments (to tax authorities)" 0
 6351 Direct taxes (except income tax) 0
@@ -790,9 +769,7 @@ exemption 0
 648 Other payroll expenses 0
 65 Other operating expenses 0
 651 "Royalties and licence fees for concessions, patents, licenses,  0
-trademarks, processes, IT solutions, rights and similar assets" 0
 6511 "Royalties and licence fees for concessions, patents, licenses,  0
-trademarks, processes, IT solutions" 0
 6516 Copyright and reproduction rights 0
 6518 Royalties and licence fees for other rights and similar assets 0
 653 Attendance fees 0
@@ -832,10 +809,8 @@ trademarks, processes, IT solutions" 0
 6717 Additional taxes claimed (other than income tax) 0
 6718 Other exceptional expenses from operations 0
 672 Account to be used to record the expenses for previous financial  0
-years 0
 674 Transactions of setting-up or liquidation of trusts 0
 6741 Transactions related to the setting-up of the trust - Transfer of  0
-assets 10
 6742 Transactions related to the luiquidation of the trust 0
 675 Book value of assets sold 0
 6751 Intangible fixed assets 0
@@ -849,9 +824,7 @@ assets 10
 6788 Sundry exceptional expenses 0
 68 "Depreciation, amortization, impairment and provisions" 0
 681 "Depreciation, amortization, impairment and provisions - Operating  0
-expenses" 0
 6811 Depreciation and amortization expenses of fixed tangible and  0
-intangible assets 0
 68111 Intangible fixed assets 0
 68112 Tangible fixed assets 0
 6812 Amortization of deferred operating expenses 0
@@ -870,7 +843,6 @@ intangible assets 0
 68665 Marketable securities 0
 6868 Other expenses 0
 687 "Depreciation, amortization, impairment and provisions - Exceptional  0
-expenses" 0
 6871 Exceptional depreciation and amortization expenses of fixed assets 0
 6872 Increase in regulated provisions 0
 68725 Derogatory depreciation 0
@@ -885,7 +857,6 @@ expenses" 0
 6952 Additional contribution to income tax 0
 6954 Income taxes payable in foreign countries 0
 696 Additional contribution to corporate income tax due on dividends paid  0
-out 0
 698 Tax consolidation 0
 6981 Tax consolidation - Expenses 0
 6989 Tax consolidation - Income 0
@@ -940,9 +911,7 @@ out 0
 74 Operating grants 0
 75 Other operating income 0
 751 "Royalties and licence fees for concessions, patents, licenses,  0
-trademarks, processes, IT solutions, rights and similar assets" 0
 7511 "Royalties and licence fees for concessions, patents, licenses,  0
-trademarks, processes, IT solutions" 0
 7516 Copyright and reproduction rights 0
 7518 Royalties and licence fees for other rights and similar assets 0
 752 Income from buildings not assigned to business activities 0
@@ -951,7 +920,6 @@ trademarks, processes, IT solutions" 0
 755 Share of profit or loss from joint ventures 0
 7551 Share of loss (accounting of the managing partner) 0
 7555 Share of profits transferred (accounting of the non-managing  0
-partners) 0
 756 Foreign exchange gains on trade receivables and payables 0
 758 Sundry operating income 0
 76 Financial income 0
@@ -984,7 +952,6 @@ partners) 0
 772 Account to be used to record the income for previous financial years 0
 774 Transactions of setting-up or liquidation of trusts 0
 7741 Transactions related to the setting-up of the trust - Transfer of  0
-assets 0
 7742 Transactions related to the luiquidation of the trust 0
 775 Income from sale of assets 0
 7751 Intangible fixed assets 0
@@ -992,7 +959,6 @@ assets 0
 7756 Financial fixed assets 0
 7758 Other assets 0
 777 Share of investment grants transferred to income for the financial  0
-year 0
 778 Other exceptional income 0
 7781 Gains from indexation clauses 0
 7782 Prizes 0
@@ -1000,9 +966,7 @@ year 0
 7788 Sundry exceptional income 0
 78 "Reversal of depreciation, amortization, impairment and provisions" 0
 781 "Reversal of depreciation, amortization, impairment losses and  0
-provisions (Operating income)" 0
 7811 Reversal of depreciation and amortization of fixed tangible and  0
-intangible assets 0
 78111 Intangible fixed assets 0
 78112 Tangible fixed assets 0
 7815 Reversal of provisions for operating liabilities and expenses 0
@@ -1013,7 +977,6 @@ intangible assets 0
 78173 Inventory and work in progress 0
 78174 Receivables 0
 786 Reversal of provisions for liabilities and impairment losses  0
-(Financial income) 0
 7865 Reversal of provisions for financial liabilities and expenses 0
 7866 Reversal of impairment losses of financial assets 0
 78662 Financial fixed assets 0
