@@ -96,7 +96,7 @@ int main() {
 
                 try {
                     // Create a new transaction and automatically assign an ID
-                    forestTree.addTransaction(accountNumber, Transaction(amount, type, ""));
+                    forestTree.addTransaction(accountNumber, Transaction(amount, type));
                     cout << "Transaction added successfully." << endl;
                 } catch (const exception &e) {
                     cerr << "Error: " << e.what() << endl;

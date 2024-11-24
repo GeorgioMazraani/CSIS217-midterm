@@ -7,11 +7,13 @@
   about the amount, type (debit or credit), and related account information.
 
   Basic operations:
-    Constructor:          Constructs a Transaction object with a unique ID,
+    Constructor:          Constructs a Transaction object with the specified
                           amount, type, and related account.
     Getters:              Provides access to transaction attributes such as
                           transaction ID, amount, type, and related account.
     Setters:              Allows modification of transaction attributes.
+    setTransactionID:     Assigns a transaction ID (used by accounts to assign
+                          sequential IDs to their transactions).
     applyTransaction:     Applies the transaction to a given account and its
                           parent accounts.
     isValid:              Validates the feasibility of applying the transaction
@@ -20,7 +22,7 @@
                           Transaction objects.
 
   Class Invariant:
-    1. Each transaction has a unique transaction ID.
+    1. Each transaction has a unique transaction ID, assigned by the account.
     2. The transaction type is represented by 'D' (Debit) or 'C' (Credit).
     3. The related account is represented by its name or identifier as a string.
 ----------------------------------------------------------------------------**/
@@ -34,8 +36,7 @@ class Account; // Forward declaration
 
 class Transaction {
 private:
-    static int nextTransactionID; // Static variable to track the next transaction ID
-    int transactionID;          // Unique identifier for the transaction
+    int transactionID;          // Unique identifier for the transaction (assigned by the account)
     double amount;              // Transaction amount
     char debitOrCredit;         // 'D' for Debit, 'C' for Credit
     string relatedAccount;      // Account this transaction is related to
@@ -45,13 +46,13 @@ public:
     /*------------------------------------------------------------------------
       Constructs a Transaction object with the specified attributes.
 
-      Precondition:  A valid ID, amount, transaction type ('D' or 'C'), and
+      Precondition:  A valid amount, transaction type ('D' or 'C'), and
                      related account are provided.
       Post-condition: A Transaction object is created with the specified
-                      attributes.
+                      attributes. The transaction ID is set separately by
+                      the account.
     -----------------------------------------------------------------------*/
-
-    Transaction(double amt, char dc, const std::string &account);
+    Transaction(double amt, char dc);
 
     /***** Getters *****/
     /*------------------------------------------------------------------------
@@ -80,6 +81,16 @@ public:
     void setDebitOrCredit(char dc);
 
     void setRelatedAccount(const string &account);
+
+    /***** Transaction ID Management *****/
+    /*------------------------------------------------------------------------
+      Sets the transaction ID for the transaction. This allows accounts to
+      assign sequential IDs to their transactions.
+
+      Precondition:  A valid transaction ID is provided.
+      Post-condition: The transaction ID is updated.
+    -----------------------------------------------------------------------*/
+    void setTransactionID(int id);
 
     /***** Apply Transaction *****/
     /*------------------------------------------------------------------------

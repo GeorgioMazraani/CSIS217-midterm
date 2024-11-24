@@ -3,11 +3,9 @@
 
 using namespace std;
 
-int Transaction::nextTransactionID = 1;
-
-// Constructor: Initializes a Transaction object with auto-incrementing ID, amount, type, and related account
-Transaction::Transaction(double amt, char dc, const string &account)
-        : transactionID(nextTransactionID++), amount(amt), debitOrCredit(dc), relatedAccount(account) {
+// Constructor: Initializes a Transaction object with amount, type, and related account
+Transaction::Transaction(double amt, char dc)
+        : transactionID(0), amount(amt), debitOrCredit(dc) {
     // Validate the transaction type
     if (dc != 'D' && dc != 'C') {
         throw invalid_argument("Invalid transaction type. Use 'D' for Debit or 'C' for Credit.");
@@ -17,6 +15,11 @@ Transaction::Transaction(double amt, char dc, const string &account)
 // Returns the transaction ID
 int Transaction::getTransactionID() const {
     return transactionID;
+}
+
+// Sets the transaction ID (used to assign IDs specific to each account)
+void Transaction::setTransactionID(int id) {
+    transactionID = id;
 }
 
 // Returns the transaction amount

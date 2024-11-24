@@ -10,7 +10,7 @@ using namespace std;
 
 // Constructor: Initializes an Account with account number, description, and initial balance
 Account::Account(int accountNumber, const string &description, double initialBalance)
-        : accountNumber(accountNumber), description(description), balance(initialBalance), parent(nullptr) {
+        : accountNumber(accountNumber), description(description), balance(initialBalance), parent(nullptr), nextTransactionID(1) {
     validateAccountNumber(accountNumber); // Ensure the account number is valid
 }
 
@@ -24,7 +24,7 @@ Account::~Account() {
 // Validates the account number to ensure it is within the acceptable range
 void Account::validateAccountNumber(int accountNumber) {
     if (accountNumber <= 0 || accountNumber > 999999) {
-        throw invalid_argument("Account number must be between 1 and 99999.");
+        throw invalid_argument("Account number must be between 1 and 999999.");
     }
 }
 
@@ -64,14 +64,15 @@ void Account::updateBalance(double amount) {
 }
 
 // Adds a transaction to the account and updates balances for this account and its parent accounts
-void Account::addTransaction(double amount, char debitOrCredit, const std::string &relatedAccount) {
+void Account::addTransaction(double amount, char debitOrCredit) {
     // Validate the transaction type
     if (debitOrCredit != 'D' && debitOrCredit != 'C') {
         throw std::invalid_argument("Invalid transaction type. Use 'D' for Debit or 'C' for Credit.");
     }
 
-    // Create a new transaction with auto-incrementing ID
-    Transaction *transaction = new Transaction(amount, debitOrCredit, relatedAccount);
+    // Create a new transaction with this account's next transaction ID
+    Transaction *transaction = new Transaction(amount, debitOrCredit );
+    transaction->setTransactionID(nextTransactionID++); // Use and increment the account's transaction ID
 
     // Validate the transaction
     if (!transaction->isValid(this)) {
@@ -85,6 +86,7 @@ void Account::addTransaction(double amount, char debitOrCredit, const std::strin
     // Calculate the adjustment based on the transaction type
     double adjustment = (debitOrCredit == 'D') ? amount : -amount;
 
+
     // Propagate the balance adjustment to this account and its parent accounts
     Account *current = this;
     while (current) {
@@ -92,7 +94,6 @@ void Account::addTransaction(double amount, char debitOrCredit, const std::strin
         current = current->getParent();
     }
 }
-
 
 // Removes a transaction by its ID and adjusts balances accordingly
 void Account::removeTransaction(int transactionID) {
@@ -132,7 +133,6 @@ istream &operator>>(istream &in, Account &account) {
 }
 
 // Overloaded output operator: Writes account details to the output stream
-// Overloaded output operator: Writes account details to the output stream
 ostream &operator<<(ostream &out, const Account &account) {
     // Format the account number and description
     out << account.accountNumber << " ";
@@ -148,21 +148,22 @@ ostream &operator<<(ostream &out, const Account &account) {
     out << " " << std::fixed << std::setprecision(2) << account.balance << "\n";
 
     // Output the transactions
+    int transactionNumber = 1;
     for (const Transaction *transaction : account.transactions) {
-        out << "\t" << *transaction << "\n"; // Assuming Transaction has operator<< defined
+        out << "\tTransaction " << transactionNumber++ << ": "
+            << *transaction << "\n"; // Assuming Transaction has operator<< defined
     }
 
     return out;
 }
-
-
 
 // Copy constructor: Creates a deep copy of the given Account object
 Account::Account(const Account &other)
         : accountNumber(other.accountNumber),
           description(other.description),
           balance(other.balance),
-          parent(other.parent) {
+          parent(other.parent),
+          nextTransactionID(other.nextTransactionID) {
     for (const auto &t : other.transactions) {
         transactions.push_back(new Transaction(*t)); // Deep copy of transactions
     }
@@ -175,6 +176,7 @@ Account &Account::operator=(const Account &other) {
         description = other.description;
         balance = other.balance;
         parent = other.parent;
+        nextTransactionID = other.nextTransactionID;
 
         // Clear existing transactions
         for (auto t : transactions) {
@@ -201,7 +203,9 @@ void Account::saveToFile(const string &filename) const {
          << std::quoted(description) << " "
          << fixed << setprecision(2) << balance << "\n";
 
+    int transactionNumber = 1;
     for (const Transaction *transaction : transactions) {
-        file << "  " << *transaction << "\n";
+        file << "  Transaction " << transactionNumber++ << ": "
+             << *transaction << "\n";
     }
 }
