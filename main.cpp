@@ -5,8 +5,8 @@
 using namespace std;
 
 // Predefined file paths for loading and saving account data
-const string ORIGINAL_FILE = "C:\\Users\\Personal\\CLionProjects\\ADSProject\\CSIS217-midterm\\accountswithspace.txt";
-const string UPDATED_FILE = "C:\\Users\\Personal\\CLionProjects\\ADSProject\\CSIS217-midterm\\accountswithspace2.txt";
+const string ORIGINAL_FILE = "C:\\Users\\User\\OneDrive\\Desktop\\uob\\CSIS217-midterm\\CSIS217-midterm\\accountswithspace.txt";
+const string UPDATED_FILE = "C:\\Users\\User\\OneDrive\\Desktop\\uob\\CSIS217-midterm\\CSIS217-midterm\\accountswithspace2.txt";
 
 // Displays the main menu to the user
 void displayMenu() {
@@ -96,7 +96,7 @@ int main() {
 
                 try {
                     // Create a new transaction and automatically assign an ID
-                    forestTree.addTransaction(accountNumber, Transaction(amount, type, ""));
+                    forestTree.addTransaction(accountNumber, Transaction(amount, type));
                     cout << "Transaction added successfully." << endl;
                 } catch (const exception &e) {
                     cerr << "Error: " << e.what() << endl;

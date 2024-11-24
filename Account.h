@@ -44,8 +44,9 @@ private:
     int accountNumber;                    // Unique account number
     std::string description;              // Account description
     double balance;                       // Current account balance
-    std::vector<Transaction *> transactions; // Use pointers to avoid incomplete type issues
+    std::vector<Transaction *> transactions; // List of transactions for the account
     Account *parent;                      // Pointer to the parent account (if any)
+    int nextTransactionID;                // Tracks the next transaction ID for this account
 
     /***** Helper Function *****/
     /*------------------------------------------------------------------------
@@ -138,7 +139,7 @@ public:
       Precondition:  A valid Transaction object is provided.
       Post-condition: The transaction is added to the account's transaction list.
     -----------------------------------------------------------------------*/
-    void addTransaction(double amount, char debitOrCredit, const std::string &relatedAccount);
+    void addTransaction(double amount, char debitOrCredit);
 
     /*------------------------------------------------------------------------
       Removes a transaction from the account by its ID.
