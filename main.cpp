@@ -83,22 +83,20 @@ int main() {
                 break;
             }
             case 3: { // Add a transaction to an account
-                int accountNumber, transactionID;
+                int accountNumber;
                 double amount;
                 char type;
 
                 cout << "Enter account number: ";
                 cin >> accountNumber;
-                cout << "Enter transaction ID: ";
-                cin >> transactionID;
                 cout << "Enter transaction amount: ";
                 cin >> amount;
                 cout << "Enter type ('D' for Debit, 'C' for Credit): ";
                 cin >> type;
 
                 try {
-                    Transaction transaction(transactionID, amount, type, "");
-                    forestTree.addTransaction(accountNumber, transaction);
+                    // Create a new transaction and automatically assign an ID
+                    forestTree.addTransaction(accountNumber, Transaction(amount, type, ""));
                     cout << "Transaction added successfully." << endl;
                 } catch (const exception &e) {
                     cerr << "Error: " << e.what() << endl;

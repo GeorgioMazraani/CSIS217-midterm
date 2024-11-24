@@ -64,15 +64,26 @@ void Account::updateBalance(double amount) {
 }
 
 // Adds a transaction to the account and updates balances for this account and its parent accounts
-void Account::addTransaction(Transaction *transaction) {
-    if (!transaction->isValid(this)) {
-        throw invalid_argument("Transaction is invalid: Insufficient balance for credit transaction.");
+void Account::addTransaction(double amount, char debitOrCredit, const std::string &relatedAccount) {
+    // Validate the transaction type
+    if (debitOrCredit != 'D' && debitOrCredit != 'C') {
+        throw std::invalid_argument("Invalid transaction type. Use 'D' for Debit or 'C' for Credit.");
     }
 
-    transactions.push_back(transaction); // Add the transaction
+    // Create a new transaction with auto-incrementing ID
+    Transaction *transaction = new Transaction(amount, debitOrCredit, relatedAccount);
+
+    // Validate the transaction
+    if (!transaction->isValid(this)) {
+        delete transaction; // Clean up if invalid
+        throw std::invalid_argument("Transaction is invalid: Insufficient balance for credit transaction.");
+    }
+
+    // Add the transaction to the list
+    transactions.push_back(transaction);
 
     // Calculate the adjustment based on the transaction type
-    double adjustment = (transaction->getDebitOrCredit() == 'D') ? transaction->getAmount() : -transaction->getAmount();
+    double adjustment = (debitOrCredit == 'D') ? amount : -amount;
 
     // Propagate the balance adjustment to this account and its parent accounts
     Account *current = this;
@@ -81,6 +92,7 @@ void Account::addTransaction(Transaction *transaction) {
         current = current->getParent();
     }
 }
+
 
 // Removes a transaction by its ID and adjusts balances accordingly
 void Account::removeTransaction(int transactionID) {

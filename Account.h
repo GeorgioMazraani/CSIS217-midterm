@@ -138,7 +138,7 @@ public:
       Precondition:  A valid Transaction object is provided.
       Post-condition: The transaction is added to the account's transaction list.
     -----------------------------------------------------------------------*/
-    void addTransaction(Transaction *transaction);
+    void addTransaction(double amount, char debitOrCredit, const std::string &relatedAccount);
 
     /*------------------------------------------------------------------------
       Removes a transaction from the account by its ID.

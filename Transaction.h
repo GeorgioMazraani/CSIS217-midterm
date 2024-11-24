@@ -34,6 +34,7 @@ class Account; // Forward declaration
 
 class Transaction {
 private:
+    static int nextTransactionID; // Static variable to track the next transaction ID
     int transactionID;          // Unique identifier for the transaction
     double amount;              // Transaction amount
     char debitOrCredit;         // 'D' for Debit, 'C' for Credit
@@ -49,7 +50,8 @@ public:
       Post-condition: A Transaction object is created with the specified
                       attributes.
     -----------------------------------------------------------------------*/
-    Transaction(int id, double amt, char dc, const string &account);
+
+    Transaction(double amt, char dc, const std::string &account);
 
     /***** Getters *****/
     /*------------------------------------------------------------------------

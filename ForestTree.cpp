@@ -185,13 +185,16 @@ void ForestTree::removeAccount(int accountNumber) {
 
 // Adds a transaction to an account
 void ForestTree::addTransaction(int accountNumber, const Transaction &transaction) {
+    // Search for the account by its number
     Account *account = searchAccount(accountNumber);
     if (!account) {
         throw std::invalid_argument("Account not found");
     }
 
-    account->addTransaction(new Transaction(transaction));
+    // Delegate the transaction details to the account's addTransaction method
+    account->addTransaction(transaction.getAmount(), transaction.getDebitOrCredit(), transaction.getRelatedAccount());
 }
+
 
 // Removes a transaction from an account
 void ForestTree::removeTransaction(int accountNumber, int transactionID) {
