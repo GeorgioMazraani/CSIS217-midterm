@@ -101,8 +101,8 @@ istream& operator>>(istream& in, Account& account) {
 }
 
 ostream& operator<<(ostream& out, const Account& account) {
-    out << setw(6) << account.accountNumber << " "
-        << setw(30) << account.description.substr(0, 30) << " "
+    out << account.accountNumber << " "
+        << account.description << " "
         << fixed << setprecision(2) << account.balance << "\n";
 
     for (const Transaction* transaction : account.transactions) {

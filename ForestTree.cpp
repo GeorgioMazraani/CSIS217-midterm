@@ -76,6 +76,7 @@ void ForestTree::buildFromFile(const std::string& filename) {
 
     // Process lines
     for (size_t i = 0; i < lines.size(); i++) {
+        // Split the line into tokens
         std::istringstream iss(lines[i]);
         std::string firstToken;
         iss >> firstToken;
@@ -87,16 +88,21 @@ void ForestTree::buildFromFile(const std::string& filename) {
         double balance = 0.0;
         bool foundBalance = false;
 
-        // Read the rest of the current line
-        std::string word;
-        while (iss >> word) {
+        // Read the entire line into a vector of tokens
+        std::vector<std::string> tokens;
+        std::string token;
+        while (iss >> token) {
+            tokens.push_back(token);
+        }
+
+        // The last token should be the balance
+        if (!tokens.empty()) {
             try {
-                balance = std::stod(word);
+                balance = std::stod(tokens.back());
+                tokens.pop_back(); // Remove the balance from tokens
                 foundBalance = true;
-                break;
             } catch (...) {
-                if (!description.empty()) description += " ";
-                description += word;
+                // Last token wasn't a number, need to look ahead
             }
         }
 
@@ -110,39 +116,40 @@ void ForestTree::buildFromFile(const std::string& filename) {
 
                 if (isNumeric(nextFirstToken)) break;
 
-                std::string remainingLine;
-                std::getline(nextIss, remainingLine);
+                // Add the entire line to tokens
+                while (nextIss >> token) {
+                    tokens.push_back(token);
+                }
 
-                // Check if this line has a balance at the end
-                std::istringstream remainingStream(remainingLine);
-                std::string word;
-                std::string tempDesc;
-                while (remainingStream >> word) {
+                // Check if the last token is a number
+                if (!tokens.empty()) {
                     try {
-                        balance = std::stod(word);
+                        balance = std::stod(tokens.back());
+                        tokens.pop_back(); // Remove the balance
                         foundBalance = true;
                         break;
                     } catch (...) {
-                        if (!tempDesc.empty()) tempDesc += " ";
-                        tempDesc += word;
+                        // Continue to next line
                     }
                 }
-
-                if (!tempDesc.empty()) {
-                    if (!description.empty()) description += " ";
-                    description += tempDesc;
-                }
-
-                if (foundBalance) break;
                 j++;
             }
             i = j - 1;  // Update the outer loop counter
         }
 
+        // Join all remaining tokens to form the description
+        description = "";
+        for (const auto& tok : tokens) {
+            if (!description.empty()) description += " ";
+            description += tok;
+        }
+
         // Clean up the description and add the account
         description = cleanDescription(description);
         try {
-            addAccount(accountNumber, description, balance);
+            if (!description.empty()) {
+                addAccount(accountNumber, description, balance);
+            }
         } catch (const std::exception& e) {
             std::cerr << "Error adding account " << accountNumber << ": " << e.what() << std::endl;
         }
