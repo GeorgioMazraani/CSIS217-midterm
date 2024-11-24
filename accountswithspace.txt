@@ -1,0 +1,1057 @@
+1 EQUITY AND LIABILITIES 0
+10 Capital and reserves 0
+101 Capital 0
+1011 Subscribed capital - uncalled 0
+1012 "Subscribed capital - called-up, unpaid" 0
+1013 "Subscribed capital - called-up, paid-up" 0
+10131 Remaining capital 0
+10132 Returned capital 0
+1018 Subscribed capital subject to specific regulations 0
+102 Trust funds 0
+104 Premiums related to share capital 0
+1041 Share premiums 0
+1042 Merger premiums 0
+1043 Contribution premiums 0
+1044 Premiums on conversion of bonds into shares 0
+1045 Share warrants 0
+105 Revaluation differences 0
+1051 Special revaluation reserve 0
+1052 Non-mandatory revaluation difference 0
+1053 Revaluation reserve 0
+1055 Revaluation differences (other legal transactions) 0
+1057 Other revaluation differences in France 0
+1058 Other revaluation differences in foreign countries 0
+106 Reserves 0
+1061 Legal reserve 0
+10611 Standard legal reserve 0
+10612 Net long-term capital gains 0
+1062 Reserves not available for distribution 0
+1063 Statutory or contractual reserves 0
+1064 Regulated reserves 0
+10641 Net long-term capital gains 0
+10643 Reserves resulting from the granting of investment grants 0
+10648 Other regulated reserves 0
+1068 Other reserves 0
+10681 Self insurance reserve 0
+10688 Sundry reserves 0
+107 Difference in equity method 0
+108 Owner's proprietor account 0
+109 Shareholders : subscribed uncalled capital 0
+11 Retained earnings (debit or credit balance) 0
+110 Retained earnings (credit balance) 0
+119 Negative retained earnings (debit balance) 0
+12 Profit or loss for the financial year 0
+120 Profit for the financial year 0
+129 Loss for the financial year 0
+13 Investment grants 0
+131 Equipment grants 0
+1311 State 0
+1312 Regions 0
+1313 Departments 0
+1314 Municipalities 0
+1315 Public authorities 0
+1316 State-owned enterprises 0
+1317 Private companies and organizations 0
+1318 Others 0
+138 Other investment grants (same breakdown as account 131) 0
+139 Investment grants recorded in the income statement 0
+1391 Equipment grants 0
+13911 State 0
+13912 Regions 0
+13913 Departments 0
+13914 Municipalities 0
+13915 Public authorities 0
+13916 State-owned enterprises 0
+13917 Private companies and organizations 0
+13918 Other 0
+1398 Other investment grants (same breakdown as account 1391) 0
+14 Regulated provisions 0
+142 Regulated provisions relating to fixed assets 0
+1423 Provisions for reconstitution of mining and petroleum deposits 0
+1424 Provisions for investment (employee profit-sharing) 0
+143 Regulated provisions relating to inventory 0
+1431 Price increase 0
+1432 Exchange rate fluctuations 0
+144 Regulated provisions relating to other assets 0
+145 Derogatory depreciation 0
+146 Special revaluation provision 0
+147 Reinvested capital gains 0
+148 Other regulated provisions 0
+15 Provisions 0
+151 Provisions for liabilities 0
+1511 Provisions for litigation 0
+1512 Provisions for warranties given to customers 0
+1513 Provisions for losses on futures markets 0
+1514 Provisions for fines and penalties 0
+1515 Provisions for foreign exchange losses 0
+1516 Provisions for losses on contracts 0
+1518 Other provisions for liabilities 0
+153 Provisions for pensions and similar obligations 0
+154 Provisions for restructuring 0
+155 Provisions for taxes 0
+156 Provisions for the renewal of fixed assets (concession companies) 0
+157 Provisions for deferred expenses 0
+1572 Provisions for major maintenance or major overhauls 0
+158 Other provisions for expenses 0
+1581 Provisions for renovation 0
+16 Loans and similar debts 0
+161 Convertible debenture loans 0
+162 Bonds related to net liabilities in a trust 0
+163 Other debenture loans 0
+164 Loans from lending institutions 0
+165 Deposits and sureties received 0
+1651 Deposits 0
+1655 Sureties 0
+166 Employee profit-sharing 0
+1661 Blocked accounts 0
+1662 Profit-sharing funds 0
+167 Loans and debts with special conditions 0
+1671 Issues of non-voting shares 0
+1674 Advances by the state subject to conditions 0
+1675 Profit-sharing loans 0
+168 Other loans and similar debts 0
+1681 Other loans 0
+1685 Capitalized life annuities 0
+1687 Other debts 0
+1688 Accrued interest 0
+16881 on convertible debenture loans 0
+16883 on other debenture loans 0
+16884 on loans from lending institutions 0
+16885 on deposits and sureties received 0
+16886 on employee profit-sharing 0
+16887 on loans and debts with special conditions 0
+16888 on other loans and similar debts 0
+169 Debenture redemption premiums 0
+17 Debts related to equity interests 0
+171 Debts related to equity interests (Group) 0
+174 Debts related to equity interests (non-Group) 0
+178 Debts related to joint ventures 0
+1781 Principal 0
+1788 Accrued interest 0
+18 Intra-entity transactions 0
+181 Intra-entity transactions between establishments 0
+186 Goods and services traded between establishments (expenses) 0
+187 Goods and services traded between establishments (income) 0
+188 Intra-entity transactions through a joint venture 0
+2 FIXED ASSETS 0
+20 Intangible fixed assets 0
+201 Formation expenses 0
+2011 Set-up costs 0
+2012 Start-up costs 0
+20121 Prospecting costs 0
+20122 Advertising expenses 0
+2013 "Increase in capital and various transactions costs (mergers,  0
+demergers, changes of legal form)" 0
+203 Research and development costs 0
+205 "Concessions and similar rights, patents, licenses, trademarks,  0
+processes, IT solutions, rights and similar assets" 0
+206 Leasehold rights 0
+207 Goodwill 0
+208 Other intangible fixed assets 0
+2081 Merger deficit on intangible assets 0
+21 Tangible fixed assets 0
+211 Land 0
+2111 Undeveloped land 0
+2112 Serviced land 0
+2113 Underground and above ground level land 0
+2114 Quarry land (Deep level underground) 0
+2115 Developed land 0
+21151 "Industrial properties (A, B)" 0
+21155 "Administrative and commercial properties (A, B)" 0
+21158 Other properties 0
+211581 "for business activities (A, B)" 0
+211588 "for non business activities (A, B)" 0
+2116 Fixed asset order account 0
+212 Land fixtures and installations 0
+213 Constructions 0
+2131 Buildings 0
+21311 "Industrial properties (A, B)" 0
+21315 "Administrative and commercial properties (A, B)" 0
+21318 Other properties 0
+213181 "for business activities (A, B)" 0
+213188 "for non business activities (A, B)" 0
+2135 "Building installations, fittings and fixtures" 0
+21351 "Industrial properties (A, B)" 0
+21355 "Administrative and commercial properties (A, B)" 0
+21358 Other properties 0
+213581 "for business activities (A, B)" 0
+213588 "for non business activities (A, B)" 0
+2138 Infrastructure works 0
+21381 Roadways 0
+21382 Railways 0
+21383 Waterways 0
+21384 Dams 0
+21385 Airfield runways 0
+214 Constructions on third party's land (same breakdown as account 213) 0
+215 "Technical installations, industrial machinery, equipment and tools" 0
+2151 Specialized complex installations 0
+21511 on own land 0
+21514 on third party's land 0
+2153 Specific installations 0
+21531 on own land 0
+21534 on third party's land 0
+2154 Industrial machinery and equipment 0
+2155 Industrial tools 0
+2157 "Fixtures and fittings for industrial machinery, equipment and  0
+tools" 0
+218 Other tangible fixed assets 0
+2181 "Various installations, fixtures and fittings" 0
+2182 Transport equipment 0
+2183 Office equipment and computer hardware 0
+2184 Furniture 0
+2185 Livestock 0
+2186 Returnable packaging 0
+2187 Merger deficit on tangible assets 0
+22 Concession fixed assets 0
+229 Grantor's rights 0
+23 Fixed assets in progress 0
+231 Tangible fixed assets in progress 0
+2312 Land 0
+2313 Constructions 0
+2315 "Technical installations, industrial machinery, equipment and tools" 0
+2318 Other tangible fixed assets 0
+232 Intangible fixed assets in progress 0
+237 Advance payments on account on intangible fixed assets 0
+238 Advance payments on account on orders for intangible fixed assets 0
+2382 Land 0
+2383 Constructions 0
+2385 "Technical installations, industrial machinery, equipment and tools" 0
+2388 Other tangible fixed assets 0
+25 Shares in affiliated companies and receivables from them 0
+26 Equity interests and receivables from equity interests 0
+261 Equity investments 0
+2611 Shares 0
+2618 Other securities 0
+266 Other types of equity interests 0
+2661 Rights representing net assets in a trust 0
+267 Receivables from equity interests 0
+2671 Receivables from equity interests (Group) 0
+2674 Receivables from equity interests (non-Group) 0
+2675 Payments representing non-capital contributions (call for funds) 0
+2676 Convertible loans 0
+2677 Other receivables from equity interests 0
+2678 Accrued interest 0
+268 Receivables from joint ventures 0
+2681 Principal 0
+2688 Accrued interest 0
+269 Remaining payments on unpaid equity investments 0
+27 Other financial fixed assets 0
+271 Long-term securities other than portfolio investments 0
+2711 Shares 0
+2718 Other securities 0
+272 Long-term debt securities 0
+2721 Bonds 0
+2722 Bills 0
+273 Portfolio investments 0
+274 Loans 0
+2741 Participating loans 0
+2742 Loans to partners 0
+2743 Loans to employees 0
+2748 Other loans 0
+275 Deposits and sureties paid 0
+2751 Deposits 0
+2755 Sureties 0
+276 Other long-term receivables 0
+2761 Sundry receivables 0
+2768 Accrued interest 0
+27682 on long-term debt securities 0
+27684 on loans 0
+27685 on deposits and guarantees 0
+27688 on sundry receivables 0
+277 Own shares 0
+2771 Own shares 0
+2772 Own shares in the process of cancellation 0
+278 Merger deficit on financial assets 0
+279 Remaining payments on unpaid long-term securities 0
+28 Accumulated amortization and depreciation of fixed assets 0
+280 Accumulated amortization of intangible fixed assets 0
+2801 Formation expenses (same breakdown as account 201) 0
+2803 Research and development costs 0
+2805 "Concessions and similar rights, patents, licenses, trademarks,  0
+processes, IT solutions, rights and similar assets" 0
+2807 Goodwill 0
+2808 Other intangible fixed assets 0
+28081 Accumulated amortization of merger deficit on intangible assets 0
+281 Accumulated depreciation of tangible fixed assets 0
+2812 Land fixtures and installations (same breakdown as account 212) 0
+2813 Constructions (same breakdown as account 213) 0
+2814 Constructions on third party's land (same breakdown as account 214) 0
+2815 "Technical installations, industrial machinery, equipment and tools  0
+(same breakdown as account 215)" 0
+2818 Other tangible fixed assets (same breakdown as account 218) 0
+28187 Accumulated amortization of merger deficit on tangible assets 0
+282 Accumulated amortization and depreciation of concession fixed assets 0
+29 Provisions for impairment of fixed assets 0
+290 Provisions for impairment of intangible fixed assets 0
+2905 "Trademarks, processes, rights and similar assets" 0
+2906 Leasehold rights 0
+2907 Goodwill 0
+2908 Other intangible fixed assets 0
+29081 Provisions for impairment of merger deficit on intangible assets 0
+291 Provisions for impairment of tangible fixed assets (same breakdown as  0
+account 21) 0
+29187 Provisions for impairment of concession fixed assets 0
+292 Provisions for impairment of concession fixed assets 0
+293 Provisions for impairment of fixed assets in progress 0
+2931 Tangible fixed assets in progress 0
+2932 Intangible fixed assets in progress 0
+296 Provisions for impairment of equity interests and receivables from  0
+equity interests 0
+2961 Equity investments 0
+2966 Other types of equity interests 0
+2967 Receivables from equity interests (same breakdown as account 267) 0
+2968 Other receivables from joint ventures (same breakdown as account  0
+268) 0
+297 Provisions for impairment of other financial fixed assets 0
+2971 Long-term securities other than portfolio investments (same  0
+breakdown as account 271) 0
+2972 Long-term debt securities (same breakdown as account 272) 0
+2973 Portfolio investments 0
+2974 Loans (same breakdown as account 274) 0
+2975 Deposits and sureties paid (same breakdown as account 275) 0
+2976 Other long-term receivables (same breakdown as account 276) 0
+29787 Provisions for impairment of merger deficit on financial assets 0
+3 INVENTORY AND WORK IN PROGRESS 0
+31 Raw materials (and supplies) 0
+311 Materials (or range) A 0
+312 Materials (or range) A 0
+317 "Supplies A, B, C," 0
+32 Other supplies 0
+321 Consumable materials 0
+3211 Materials (or range) C 0
+3212 Materials (or range) D 0
+322 Consumable supplies 0
+3221 Fuels 0
+3222 Cleaning products 0
+3223 Workshop and factory supplies 0
+3224 Store supplies 0
+3225 Office supplies 0
+326 Packaging 0
+3261 Lost packaging 0
+3265 Unidentifiable recoverable packaging 0
+3267 Mixed-use packaging 0
+33 Work in progress of goods 0
+331 Goods in progress 0
+3311 Goods in progress P1 0
+3312 Goods in progress P2 0
+335 Works in progress 0
+3351 Works in progress T 1 0
+3352 Works in progress T 2 0
+34 Work in progress of services 0
+341 Studies in progress 0
+3411 Studies in progress E1 0
+3412 Studies in progress E2 0
+345 Services in progress 0
+3451 Services in progress S1 0
+3452 Services in progress S2 0
+35 Inventory of goods 0
+351 Intermediate goods 0
+3511 Intermediate goods (or range) A 0
+3512 Intermediate goods (or range) B 0
+355 Finished goods 0
+3551 Finished goods (or range) A 0
+3552 Finished goods (or range) B 0
+358 Residual goods (or recovered materials) 0
+3581 Waste 0
+3585 Scrap 0
+3586 Recovered materials 0
+36 "Account to be opened, if applicable, as ""Inventory from fixed  0
+assets""" 0
+37 Inventory of goods for resale 0
+371 Goods for resale (or range) A 0
+372 Goods for resale (or range) B 0
+38 "When the general accounting is used by the entity in the perpetual  0
+inventory system, account 38 may be used to record inventory in transit,  0
+on consignment, or in storage." 0
+39 Provisions for impairment of inventory and work in progress 0
+391 Provisions for impairment of raw materials (and supplies) 0
+3911 Materials (or range) A 0
+3912 Materials (or range) A 0
+3917 "Supplies A,B,C" 0
+392 Provisions for impairment of other supplies 0
+3921 Consumable materials (same breakdown as account 321) 0
+3922 Consumable supplies (same breakdown as account 322) 0
+3926 Packaging (same breakdown as account 326) 0
+393 Provisions for impairment of work in progress of goods 0
+3931 Goods in progress (same breakdown as account 331) 0
+3935 Works in progress (same breakdown as account 335) 0
+394 Provisions for impairment of work in progress of services 0
+3941 Studies in progress (same breakdown as account 341) 0
+3945 Services in progress (same breakdown as account 345) 0
+395 Provisions for impairment of inventory of goods 0
+3951 Intermediate goods (same breakdown as account 351) 0
+3955 Finished goods (same breakdown as account 355) 0
+397 Provisions for impairment of inventory of goods for resale 0
+3971 Goods for resale (or range) A 0
+3972 Goods for resale (or range) B 0
+4 ACCOUNTS RECEIVABLE AND PAYABLE 0
+40 Suppliers - Accounts payable and related accounts 0
+400 Suppliers - Accounts payable and related accounts 0
+401 Suppliers 0
+4011 Suppliers - Accounts payable for purchases of goods and services 0
+4017 Suppliers - Holdback 0
+403 Suppliers - Bills payable 0
+404 Fixed assets suppliers 0
+4041 Fixed assets suppliers - Accounts payable for fixed assets 0
+4047 Fixed assets suppliers - Holdback 0
+405 Fixed assets suppliers - Bills payable 0
+408 Suppliers - Invoices not yet received 0
+4081 Suppliers 0
+4084 Fixed assets suppliers 0
+4088 Suppliers - Accrued interest 0
+409 Suppliers with a debit balance 0
+4091 Suppliers - Advance payments on account on orders 0
+4096 Suppliers - Receivables for returnable packaging and equipment 0
+4097 Suppliers - Other debit balance payables 0
+40971 Operating suppliers 0
+40974 Fixed assets suppliers 0
+4098 "Allowances, discounts, rebates and other credit notes not yet  0
+received" 0
+41 Customers - Trade receivables and related accounts 0
+410 Customers - Trade receivables and related accounts 0
+411 Customers 0
+4111 Customers - Sales of goods or services 0
+4117 Customers - Holdback 0
+413 Customers - Bills receivable 0
+416 Customers - Doubtful accounts 0
+418 Customers - Revenue not yet invoiced 0
+4181 Customers - Invoices to be issued 0
+4188 Customers - Accrued interest 0
+419 Customers with a crebit balance 0
+4191 Customers - Advance payments on account received on orders 0
+4196 Customers - Payables for returnable packaging and equipment 0
+4197 Customers - Other credit balance receivables 0
+4198 "Allowances, discounts, rebates and other credit notes ot be issued" 0
+42 Employees and related accounts 0
+421 Employees - Salaries payable 0
+422 "Works councils, establishment committees, ..." 0
+424 Employee profit-sharing 0
+4246 Special reserve 0
+4248 Current accounts 0
+425 Employees - Advance payments on account 0
+426 Employees - Deposits 0
+427 Employees - Allowable salary deductions 0
+428 Employees - Accrued expenses and accrued income 0
+4282 Accrued vacation pay 0
+4284 Accrued employee profit-sharing 0
+4286 Other accrued expenses 0
+4287 Accrued income 0
+43 Social security and other social agencies 0
+431 Social security 0
+437 Other social agencies 0
+438 Social agencies - Accrued expenses and accrued income 0
+4382 Social security tax on vacation pay 0
+4386 Other accrued expenses 0
+4387 Accrued income 0
+44 State and other public authorities 0
+441 State - Grants receivable 0
+4411 Investment grants 0
+4417 Operating grants 0
+4418 Loss compensation grants 0
+4419 Advanced grants 0
+442 "Contributions, taxes and duties collected on behalf of the State" 0
+4421 Income withholding tax 0
+4422 Flat-rate withholding tax 0
+4423 Dividend withholding tax 0
+4424 Debenture holders 0
+4425 Partners 0
+443 "Specific transactions with the State, public authorities and  0
+international organizations" 0
+4431 Receivables from the State due to the repeal of the one-month delay  0
+rule in V.A.T. 0
+4438 Accrued interest on receivables recorded in account 4431 0
+444 State - Income taxes 0
+445 State - Taxes on turnover 0
+4452 V.A.T. due within the EU 0
+4455 Taxes payable on turnover 0
+44551 V.A.T. payable 0
+44558 Taxes similar to V.A.T. 0
+4456 Deductible taxes on turnover 0
+44562 V.A.T. on fixed assets 0
+44563 V.A.T. transferred by other companies 0
+44566 V.A.T. on other goods and services 0
+44567 V.A.T. credit to be carried forward 0
+44568 Taxes similar to V.A.T. 0
+4457 Taxes on turnover collected by the company 0
+44571 V.A.T. collected 0
+44578 Taxes similar to V.A.T. 0
+4458 Taxes on turnover to settle or pending 0
+44581 Instalments - Simplified tax regime 0
+44582 Instalments - Flat-rate regime 0
+44583 Taxes on turnover refund claim 0
+44584 Over-recovery of V.A.T. 0
+44586 Taxes on turnover on invoices not yet received 0
+44587 Taxes on turnover on invoices to be issued 0
+446 Guaranteed bonds 0
+447 "Other taxes, duties and similar payments" 0
+448 State - Accrued expenses and accrued income 0
+4482 Tax on vacation pay 0
+4486 Accrued expenses 0
+4487 Accrued income 0
+449 Emission allowances to buy 0
+45 Group and partners 0
+451 Group 0
+455 Partners - Current accounts 0
+4551 Principal 0
+4558 Accrued interest 0
+456 Partners - Capital transactions 0
+4561 Partners - Capital contribution accounts 0
+45611 Contributions in kind 0
+45615 Contributions in cash 0
+4562 Capital contributors - Called-up unpaid capital 0
+45621 Shareholders - Subscribed called-up unpaid capital 0
+45625 Partners - Called-up unpaid capital 0
+4563 Partners - Payments received for capital increase 0
+4564 Partners - Prepayments 0
+4566 Defaulting shareholders 0
+4567 Partners - Payments for returned capital 0
+457 Partners - Dividends payable 0
+458 Partners - Joint ventures and Economic Interest Grouping (E.I.G.) 0
+4581 Current transactions 0
+4588 Accrued interest 0
+46 Sundry accounts receivable and payable 0
+462 Receivables from sale of fixed assets 0
+464 Payables on purchases of marketable securities 0
+465 Receivables from sales of marketable securities 0
+467 Other accounts receivable and payable 0
+468 Sundry accrued expenses and accrued income 0
+4686 Accrued expenses 0
+4687 Accrued income 0
+47 Suspense accounts 0
+471 - 473 Suspense accounts 0
+474 Valuation difference of tokens on liabilities 0
+4746 Valuation difference of tokens on liabilities - Assets 0
+4747 Valuation difference of tokens on liabilities - Liabilities 0
+475 Suspense accounts 0
+476 Unrealized exchanged losses - Assets 0
+4761 Decrease in receivables 0
+4762 Increase in debt 0
+4768 Differences offset by currency hedging 0
+477 Unrealized exchange gains - Liabilities 0
+4771 Increase in receivables 0
+4772 Decrease in debt 0
+4778 Differences offset by currency hedging 0
+478 Other suspense accounts 0
+47861 Valuation differences on derivative financial instruments - Assets 0
+47862 Valuation differences on tokens held - Assets 0
+47871 Valuation differences on derivative financial instruments -  0
+Liabilities 0
+47872 Valuation differences on tokens held - Liabilities 0
+48 Accruals and deferrals 0
+481 Deferred expenses 0
+4816 Loan issuance costs 0
+486 Prepaid expenses 0
+487 Deferred income 0
+4871 Deferred income on tokens issued 0
+488 Periodic allocation of expenses and income 0
+4886 Expenses 0
+4887 Income 0
+49 Provisions for impairment of accounts receivable 0
+491 Provisions for impairment of trade receivables 0
+495 Provisions for impairment of group and partners accounts 0
+4951 Group accounts 0
+4955 Partners current accounts 0
+4958 Joint ventures and Economic Interest Grouping (E.I.G.) 0
+496 Provisions for impairment of sundry accounts receivable 0
+4962 Receivables from sale of fixed assets 0
+4965 Receivables from sales of marketable securities 0
+4967 Other receivables 0
+5 CASH AND FINANCIAL INSTRUMENTS 0
+50 Marketable securities 0
+501 Shares in affiliated companies 0
+502 Own shares 0
+5021 Shares to be allocated to employees and assigned to a specific  0
+employee share ownership plan 0
+5022 Shares bought back to increase or maintain their value or available  0
+for allocation to employees 0
+503 Shares 0
+5031 Listed shares 0
+5035 Unlisted shares 0
+504 Other equity securities 0
+505 Own bonds and warrants bought back 0
+506 Bonds 0
+5061 Listed bonds 0
+5065 Unlisted bonds 0
+507 Treasury bills and short-term notes 0
+508 Other marketable securities and similar receivables 0
+5081 Other securities 0
+5082 Warrants 0
+5088 "Accrued interest on bonds, warrants and similar securities" 0
+509 Remaining payments on unpaid marketable securities 0
+51 "Banks, financial and similar institutions" 0
+511 Cash equivalents 0
+5111 Matured coupons for collection 0
+5112 Checks for collection 0
+5113 Bills for collection 0
+5114 Discounted bills 0
+512 Banks 0
+5121 Accounts in national currency 0
+5124 Accounts in foreign currencies 0
+514 Postal checks 0
+515 Treasury and public agency accounts 0
+516 Brokerage firms 0
+517 Other financial institutions 0
+518 Accrued interest 0
+5181 Accrued interest payable 0
+5188 Accrued interest receivable 0
+519 Short term bank advances 0
+5191 Accounts receivable loans 0
+5193 Assignment of foreign accounts receivable 0
+5198 Accrued interest on short term bank advances 0
+52 Derivative financial instruments and tokens held 0
+521 Derivative financial instruments 0
+522 Tokens held 0
+523 Own tokens 0
+524 Borrowed tokens 0
+53 Cash on hand 0
+531 Cash on hand at Head Office 0
+5311 Cash on hand in national currency 0
+5314 Cash on hand in foreign currency 0
+532 Cash on hand at branch (or factory) A 0
+533 Cash on hand at branch (or factory) B 0
+54 Imprest accounts and letters of credit 0
+58 Internal transfers 0
+59 Provisions for impairment of current financial assets 0
+590 Provisions for impairment of marketable securities 0
+5903 Shares 0
+5904 Other equity securities 0
+5906 Bonds 0
+5908 Other marketable securities and similar receivables 0
+6 EXPENSES 0
+60 Purchases (except account 603) 0
+601 Inventory purchases - Raw materials (and supplies) 0
+6011 Materials (or range) A 0
+6012 Materials (or range) A 0
+6017 "Supplies A, B, C, ." 0
+602 Inventory purchases - Other consumables 0
+6021 Consumable materials 0
+60211 Materials (or range) C 0
+60212 Materials (or range) D 0
+6022 Consumable supplies 0
+60221 Fuels 0
+60222 Cleaning products 0
+60223 Workshop and factory supplies 0
+60224 Store supplies 0
+60225 Office supplies 0
+6026 Packaging 0
+60261 Lost packaging 0
+60265 Unidentifiable recoverable packaging 0
+60267 Mixed-use packaging 0
+604 Purchase of studies and services 0
+605 "Purchases of equipment, facilities and works" 0
+606 Non-inventory materials and supplies 0
+6061 "Utilities (water, energy, ...)" 0
+6063 Maintenance and small equipment supplies 0
+6064 Office supplies 0
+6068 Other materials and supplies 0
+607 Purchases of goods for resale 0
+6071 Goods for resale (or range) A 0
+6072 Goods for resale (or range) B 0
+608 "Account reserved, if applicable, for the summary of ancillary  0
+purchase costs" 0
+609 "Allowances, discounts, rebates received on purchases of :" 0
+6091 raw materials (and supplies) 0
+6092 other inventoried supplies 0
+6094 studies and services 0
+6095 "equipment, facilities and works" 0
+6096 non inventory items (supplies) 0
+6097 goods for resale 0
+6098 "unallocated allowances, discounts, rebates" 0
+603 Changes in inventory (supplies and goods for resale) 0
+6031 Changes in inventory of raw materials (and supplies) 0
+6032 Changes in inventory of other consumables 0
+6037 Changes in inventory of goods for resale 0
+61/62 Other external expenses 0
+61 External services 0
+611 Subcontracting 0
+612 Lease payments 0
+6122 Equipment leasing 0
+6125 Real estate leasing 0
+613 Rental 0
+6132 Real estate rental 0
+6135 Rental of movable property 0
+6136 Losses on packaging 0
+614 Occupancy costs and condominium fees 0
+615 Maintenance and repairs 0
+6152 on real estate 0
+6155 on movable property 0
+6156 Maintenance 0
+616 Insurance premiums 0
+6161 Multi-peril insurance 0
+6162 Compulsory construction damage insurance 0
+6163 Transport insurance 0
+61636 purchased goods 0
+61637 sold goods 0
+61638 other goods 0
+6164 Operating risks 0
+6165 Client insolvency 0
+617 Study and research 0
+618 Sundry 0
+6181 Documentation 0
+6183 Technical documentation 0
+6185 "Symposium, seminar, conference expenses" 0
+619 "Allowances, discounts, rebates received on external services" 0
+62 Other external services 0
+621 External employees 0
+6211 Temps 0
+6214 Seconded staff and staff on loan 0
+622 Agent commissions and fees 0
+6221 Commissions and brokerage fees for purchases 0
+6222 Commissions and brokerage fees for sales 0
+6224 Freight forwarding costs 0
+6225 Factoring fees 0
+6226 Fees 0
+6227 Legal and litigation fees 0
+6228 Sundry 0
+623 "Advertising, publications, public relations" 0
+6231 Announcements and advertisements 0
+6232 Samples 0
+6233 Fairs and exhibitions 0
+6234 Gifts to customers 0
+6235 Premiums 0
+6236 Catalogs and prints 0
+6237 Publications 0
+6238 "Sundry (tips, current donations, ...)" 0
+624 Transport of goods and collective transport of employees 0
+6241 Freight-in 0
+6242 Freight-out 0
+6243 Transportation between establishments or worksites 0
+6244 Administrative transport 0
+6247 Collective transport of employees 0
+6248 Sundry 0
+625 "Travel, assignments and entertainment expenses" 0
+6251 Travel and trips 0
+6255 Moving costs 0
+6256 Assignments 0
+6257 Entertainment expenses 0
+626 Postage and telecommunication costs 0
+627 Banking and similar services 0
+6271 "Securities fees (purchase, sale, custody)" 0
+6272 Loan issuance costs 0
+6275 "Fees and commissions related to bills, bills of exchange" 0
+6276 Safe deposit box rental 0
+6278 Other fees and commissions on services 0
+628 Sundry 0
+6281 "Various assistance (contributions, ...)" 0
+6284 Recruitment costs  0
+629 "Allowances, discounts, rebates received on other external services" 0
+63 "Taxes, duties and similar payments" 0
+631 "Taxes, duties and similar payments on payroll (to tax authorities)" 0
+6311 Payroll taxes 0
+6312 Apprenticeship tax 0
+6313 Employer participation to lifelong professional training 0
+6314 Adjustement of contribution for housing construction 0
+6318 Other 0
+633 "Taxes, duties and similar payments on payroll (to other bodies)" 0
+6331 Transport tax (contribution to public transports) 0
+6332 Contributions to the National Fund for Housing (FNAL) 0
+6333 Employer participation to lifelong professional training 0
+6334 Contribution for housing construction 0
+6335 Payment in full discharge eligible for the apprenticeship tax  0
+exemption 0
+6338 Other 0
+635 "Other taxes, duties and similar payments (to tax authorities)" 0
+6351 Direct taxes (except income tax) 0
+63511 Local economic contribution (CET) 0
+63512 Property taxes 0
+63513 Other local taxes 0
+63514 Company vehicle tax 0
+6352 Non-recoverable V.A.T. 0
+6353 Indirect taxes 0
+6354 Stamp duty and registration fees 0
+63541 Transfer duty 0
+6358 Other duties 0
+637 "Other taxes, duties and similar payments (to other bodies)" 0
+6371 Social solidarity contribution (C3S) 0
+6372 Taxes collected by international public bodies 0
+6374 Taxes and duties payable in foreign countries 0
+6378 Various taxes 0
+64 Payroll expenses 0
+641 Employee compensation 0
+6411 "Salaries, wages" 0
+6412 Vacation pay 0
+6413 Bonuses 0
+6414 Allowances and other benefits 0
+6415 Family income supplement 0
+644 Sole proprietor salary 0
+645 "Contributions to social security, pension and similar schemes" 0
+6451 URSSAF contributions (social security) 0
+6452 Mutual insurance contributions 0
+6453 Pension contributions 0
+6454 ASSEDIC contributions (unemployment insurance) 0
+6458 Other social contributions 0
+646 Sole proprietor social security contributions 0
+647 Other social expenses 0
+6471 Direct allowances 0
+6472 Contributions to works councils and establishment committees 0
+6473 Contributions to health and safety committees 0
+6474 Contributions to other social and cultural activities 0
+6475 "Occupational medicine, pharmacy" 0
+648 Other payroll expenses 0
+65 Other operating expenses 0
+651 "Royalties and licence fees for concessions, patents, licenses,  0
+trademarks, processes, IT solutions, rights and similar assets" 0
+6511 "Royalties and licence fees for concessions, patents, licenses,  0
+trademarks, processes, IT solutions" 0
+6516 Copyright and reproduction rights 0
+6518 Royalties and licence fees for other rights and similar assets 0
+653 Attendance fees 0
+654 Bad debts written off 0
+6541 Accounts receivable for the financial year 0
+6544 Accounts receivable for the previous financial years 0
+655 Share of profit or loss from joint ventures 0
+6551 Share of profits transferred (accounting of the managing partner) 0
+6555 Share of loss (accounting of the non-managing partners) 0
+656 Foreign exchange losses on trade receivables and payables 0
+658 Sundry operating expenses 0
+66 Financial expenses 0
+661 Interest expenses 0
+6611 Interest on loans and debts 0
+66116 on loans and similar debts 0
+66117 on debts related to equity interests 0
+6612 "Trust expenses, profit or loss for the financial year" 0
+6615 Interest on current accounts and credit balance deposit 0
+6616 "Interest on bank and financing transactions (discount,...)" 0
+6617 Interest on guaranteed bonds 0
+6618 Interest on other debts 0
+66181 on trade debts 0
+66188 on soundry debts 0
+664 Loss on receivables from equity interests 0
+665 Discounts given 0
+666 Financial foreign exchange losses 0
+6661 Losses from sales of tokens 0
+667 Losses from sales of marketable securities 0
+668 Other financial expenses 0
+67 Exceptional expenses 0
+671 Exceptional expenses from operating transactions 0
+6711 Market penalties (and forfeits paid on purchases and sales) 0
+6712 "Fines, tax and criminal penalties" 0
+6713 "Donations, gifts" 0
+6714 Bad debts written off for the financial year 0
+6715 Grants awarded 0
+6717 Additional taxes claimed (other than income tax) 0
+6718 Other exceptional expenses from operations 0
+672 Account to be used to record the expenses for previous financial  0
+years 0
+674 Transactions of setting-up or liquidation of trusts 0
+6741 Transactions related to the setting-up of the trust - Transfer of  0
+assets 10
+6742 Transactions related to the luiquidation of the trust 0
+675 Book value of assets sold 0
+6751 Intangible fixed assets 0
+6752 Tangible fixed assets 0
+6756 Financial fixed assets 0
+6758 Other assets 0
+678 Other exceptional expenses 0
+6781 Losses from indexation clauses 0
+6782 Prizes 0
+6783 Losses from buy-back of own shares and bonds 0
+6788 Sundry exceptional expenses 0
+68 "Depreciation, amortization, impairment and provisions" 0
+681 "Depreciation, amortization, impairment and provisions - Operating  0
+expenses" 0
+6811 Depreciation and amortization expenses of fixed tangible and  0
+intangible assets 0
+68111 Intangible fixed assets 0
+68112 Tangible fixed assets 0
+6812 Amortization of deferred operating expenses 0
+6815 Increase in provisions for operating liabilities and expenses 0
+6816 Impairment losses of intangible and tangible assets 0
+68161 Intangible fixed assets 0
+68162 Tangible fixed assets 0
+6817 Impairment losses of current assets 0
+68173 Inventory and work in progress 0
+68174 Receivables- 0
+686 "Amortization, impairment and provisions - Financial expenses" 0
+6861 Amortizaton expenses of debenture redemption premiums 0
+6865 Increase in provisions for financial liabilities and expenses 0
+6866 Impairment losses of financial assets 0
+68662 Financial fixed assets 0
+68665 Marketable securities 0
+6868 Other expenses 0
+687 "Depreciation, amortization, impairment and provisions - Exceptional  0
+expenses" 0
+6871 Exceptional depreciation and amortization expenses of fixed assets 0
+6872 Increase in regulated provisions 0
+68725 Derogatory depreciation 0
+6873 Increase in regulated provisions relating to inventory 0
+6874 Increase in other regulated provisions 0
+6875 Increase in exceptional provisions 0
+6876 Exceptional impairment losses 0
+69 Employee profit-sharing - Income taxes and similar taxes 0
+691 Employee profit-sharing 0
+695 Income taxes 0
+6951 Income taxes payable in France 0
+6952 Additional contribution to income tax 0
+6954 Income taxes payable in foreign countries 0
+696 Additional contribution to corporate income tax due on dividends paid  0
+out 0
+698 Tax consolidation 0
+6981 Tax consolidation - Expenses 0
+6989 Tax consolidation - Income 0
+699 Income - Carry-back of losses 0
+7 REVENUES 0
+70 "Sales of manufactured goods, services and goods for resale" 0
+701 Sales of finished goods 0
+7011 Finished goods (or range) A 0
+7012 Finished goods (or range) B 0
+702 Sales of intermediate goods 0
+703 Sales of residual goods 0
+704 Works 0
+7041 Works of category (or activity) A 0
+7042 Works of category (or activity) B 0
+705 Studies 0
+706 Services 0
+707 Sales of goods for resale 0
+7071 Goods for resale (or range) A 0
+7072 Goods for resale (or range) B 0
+708 Ancillary income 0
+7081 Income from services operated for the benefit of the employees 0
+7082 Commissions and brokerage fees 0
+7083 Sundry rentals 0
+7084 Secondment income 0
+7085 Income from transportation and ancillary costs charged 0
+7086 Profit on returnable packaging recovery 0
+7087 Bonuses received from customers and sales premiums 0
+7088 "Other ancillary income (sale of supplies,)" 0
+709 "Sales allowances, discounts, rebates given" 0
+7091 on finished goods 0
+7092 on intermediate goods 0
+7094 on works 0
+7095 on studies 0
+7096 on services 0
+7097 on goods for resale 0
+7098 on ancillary goods and services 0
+71 Changes in inventory of finished goods and work in progress 0
+713 "Changes in inventory (work in progress, goods)" 0
+7133 Changes in work in progress of goods 0
+71331 Goods in progress 0
+71335 Works in progress 0
+7134 Changes in work in progress of services 0
+71341 Studies in progress 0
+71345 Services in progress 0
+7135 Changes in inventory of goods 0
+71351 Intermediate goods 0
+71355 Finished goods 0
+71358 Residual goods 0
+72 Own work capitalized 0
+721 Intangible fixed assets 0
+722 Tangible fixed assets 0
+74 Operating grants 0
+75 Other operating income 0
+751 "Royalties and licence fees for concessions, patents, licenses,  0
+trademarks, processes, IT solutions, rights and similar assets" 0
+7511 "Royalties and licence fees for concessions, patents, licenses,  0
+trademarks, processes, IT solutions" 0
+7516 Copyright and reproduction rights 0
+7518 Royalties and licence fees for other rights and similar assets 0
+752 Income from buildings not assigned to business activities 0
+753 "Attendance fees, directors and managers fees and compensation" 0
+754 Surplus from cooperatives 0
+755 Share of profit or loss from joint ventures 0
+7551 Share of loss (accounting of the managing partner) 0
+7555 Share of profits transferred (accounting of the non-managing  0
+partners) 0
+756 Foreign exchange gains on trade receivables and payables 0
+758 Sundry operating income 0
+76 Financial income 0
+761 Income from equity interests 0
+7611 Income from equity investments 0
+7612 "Income from the trust, profit or loss for the financial year" 0
+7616 Income from other types of equity interests 0
+7617 Income from receivables related to equity interests 0
+762 Income from other financial fixed assets 0
+7621 Income from long-term securities 0
+7626 Income from loans 0
+7627 Income from long-term receivables 0
+763 Income from other receivables 0
+7631 Income from trade receivables 0
+7638 Income from sundry receivables 0
+764 Income from marketable securities 0
+765 Discounts received 0
+766 Financial foreign exchange gains 0
+7661 Net income from sales of tokens 0
+767 Net income from sales of marketable securities 0
+768 Other financial income 0
+77 Exceptional income 0
+771 Exceptional income from operating transactions 0
+7711 Forfeits and penalties collected on purchases and sales 0
+7713 "Donations, gifts received" 0
+7714 Collection of bad debts written off 0
+7715 Loss compensation grants 0
+7717 Tax refunds other than income taxes 0
+7718 Other exceptional incom from operations 0
+772 Account to be used to record the income for previous financial years 0
+774 Transactions of setting-up or liquidation of trusts 0
+7741 Transactions related to the setting-up of the trust - Transfer of  0
+assets 0
+7742 Transactions related to the luiquidation of the trust 0
+775 Income from sale of assets 0
+7751 Intangible fixed assets 0
+7752 Tangible fixed assets 0
+7756 Financial fixed assets 0
+7758 Other assets 0
+777 Share of investment grants transferred to income for the financial  0
+year 0
+778 Other exceptional income 0
+7781 Gains from indexation clauses 0
+7782 Prizes 0
+7783 Profit from buy-back of own shares and bonds 0
+7788 Sundry exceptional income 0
+78 "Reversal of depreciation, amortization, impairment and provisions" 0
+781 "Reversal of depreciation, amortization, impairment losses and  0
+provisions (Operating income)" 0
+7811 Reversal of depreciation and amortization of fixed tangible and  0
+intangible assets 0
+78111 Intangible fixed assets 0
+78112 Tangible fixed assets 0
+7815 Reversal of provisions for operating liabilities and expenses 0
+7816 Reversal of impairment losses of intangible and tangible assets 0
+78161 Intangible fixed assets 0
+78162 Tangible fixed assets 0
+7817 Reversal of impairment losses of current assets 0
+78173 Inventory and work in progress 0
+78174 Receivables 0
+786 Reversal of provisions for liabilities and impairment losses  0
+(Financial income) 0
+7865 Reversal of provisions for financial liabilities and expenses 0
+7866 Reversal of impairment losses of financial assets 0
+78662 Financial fixed assets 0
+78665 Marketable securities 0
+787 Reversal of provisions and impairment losses (Exceptional income) 0
+7872 Reversal of regulated provisions relating to fixed assets 0
+78725 Derogatory depreciation 0
+78726 Special revaluation provision 0
+78727 Reinvested capital gains 0
+7873 Reversal of regulated provisions relating to inventory 0
+7874 Reversal of other regulated provisions 0
+7875 Reversal of exceptional provisions 0
+7876 Reversal of exceptional impairment losses 0
+79 Transfers of expenses 0
+791 Transfers of operating expenses 0
+796 Transfers of financial expenses 0
+797 Transfers of exceptional expenses 0
+8 SPECIAL ACCOUNTS 0
+80 Commitments 0
+801 Commitments made by the entity 0
+8011 "Bonds, sureties, guarantees" 0
+8014 Bills in circulation endorsed by the entity 0
+8016 Upcoming leasing payments 0
+80161 Equipment leasing 0
+80165 Real estate leasing 0
+8018 Other commitments made 0
+802 Commitments received by the entity 0
+8021 "Bonds, sureties, guarantees" 0
+8024 Discounted receivables not yet due 0
+8026 Leasing commitments received 0
+80261 Equipment leasing 0
+80265 Real estate leasing 0
+8028 Other commitments received 0
+809 Commitments counterpart 0
+8091 Counterpart 801 0
+8092 Counterpart 802 0
+88 Profit and loss pending appropriation 0
+89 Balance sheet 0
+890 Opening balance sheet 0
+891 Closing balance sheet 0
+

@@ -23,7 +23,7 @@ Account::~Account() {
 
 // Validates the account number to ensure it is within the acceptable range
 void Account::validateAccountNumber(int accountNumber) {
-    if (accountNumber <= 0 || accountNumber > 99999) {
+    if (accountNumber <= 0 || accountNumber > 999999) {
         throw invalid_argument("Account number must be between 1 and 99999.");
     }
 }
@@ -121,15 +121,26 @@ istream &operator>>(istream &in, Account &account) {
 
 // Overloaded output operator: Writes account details to the output stream
 ostream &operator<<(ostream &out, const Account &account) {
-    out << setw(6) << account.accountNumber << " "
-        << setw(30) << account.description.substr(0, 30) << " "
-        << fixed << setprecision(2) << account.balance << "\n";
+    // Format the account number and description
+    out << account.accountNumber << " ";
 
+    // Ensure the description is padded or truncated to a fixed width
+    std::string description = account.description.substr(0, 80); // Truncate if too long
+    if (description.length() < 80) {  // Pad with spaces if too short
+        description.append(80 - description.length(), ' ');
+    }
+    out << description;
+
+    // Format the balance with fixed precision
+    out << " " << std::fixed << std::setprecision(2) << account.balance << "\n";
+
+    // Output the transactions
     for (const Transaction *transaction : account.transactions) {
         out << "  " << *transaction << "\n";
     }
     return out;
 }
+
 
 // Copy constructor: Creates a deep copy of the given Account object
 Account::Account(const Account &other)

@@ -5,8 +5,8 @@
 using namespace std;
 
 // Predefined file paths for loading and saving account data
-const string ORIGINAL_FILE = "C:\\CSIS217\\accountswithspace.txt";
-const string UPDATED_FILE = "C:\\CSIS217\\accountswithspace2.txt";
+const string ORIGINAL_FILE = "C:\\Users\\Personal\\CLionProjects\\ADSProject\\CSIS217-midterm\\accountswithspace.txt";
+const string UPDATED_FILE = "C:\\Users\\Personal\\CLionProjects\\ADSProject\\CSIS217-midterm\\accountswithspace2.txt";
 
 // Displays the main menu to the user
 void displayMenu() {
