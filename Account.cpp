@@ -1,3 +1,4 @@
+
 #include "Account.h"
 #include "Transaction.h"
 #include <stdexcept>
@@ -101,7 +102,7 @@ istream& operator>>(istream& in, Account& account) {
 
 ostream& operator<<(ostream& out, const Account& account) {
     out << setw(6) << account.accountNumber << " "
-        << setw(30) << account.description.substr(0, 30) << " "
+        << setw(80) << account.description.substr(0, 80) << " "
         << fixed << setprecision(2) << account.balance << "\n";
 
     for (const Transaction* transaction : account.transactions) {

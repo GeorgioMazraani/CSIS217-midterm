@@ -51,6 +51,8 @@ public:
     friend std::ostream& operator<<(std::ostream& out, const Account& account);
 
     void saveToFile(const std::string &filename) const;
+
+    void setDescription(const std::string &newDescription);
 };
 
 #endif // ACCOUNT_H

@@ -1,5 +1,5 @@
-#ifndef CSIS217_PROJECT_FORESTTREE_H
-#define CSIS217_PROJECT_FORESTTREE_H
+#ifndef FORESTTREE_H
+#define FORESTTREE_H
 
 #include <iostream>
 #include <string>
@@ -50,7 +50,7 @@ public:
     // Print account details
     void printAccountDetails(int accountNumber, const std::string& filename);
 
-    void printTreeRecursive(Account *account, ofstream &file, int indent);
+    void printTreeRecursive(Account *account, std::ofstream &file, int indent);
 };
 
-#endif // CSIS217_PROJECT_FORESTTREE_H
+#endif // FORESTTREE_H
