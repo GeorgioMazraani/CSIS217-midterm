@@ -31,9 +31,9 @@ void ForestTree::initialize() {
 }
 
 // Helper namespace for utility functions used in ForestTree operations
-namespace {
+
     // Determines the parent account number based on the current account number
-    int findParentNumber(int accountNumber) {
+    int ForestTree::findParentNumber(int accountNumber) const {
         std::string numStr = std::to_string(accountNumber);
 
         // If the account number is single-digit or invalid, return 0 (no parent)
@@ -51,14 +51,8 @@ namespace {
     }
 
 
-    // Checks if a string is numeric
-    bool isNumeric(const std::string &str) {
-        return !str.empty() && str.find_first_not_of("0123456789") == std::string::npos;
-    }
-
     // Cleans account description by removing unwanted characters and trimming spaces
-    std::string cleanDescription(const std::string &desc) {
-        // Handle empty strings
+    std::string ForestTree::cleanDescription(const std::string& desc) const {
         if (desc.empty()) {
             return "";
         }
@@ -77,12 +71,9 @@ namespace {
             cleaned = cleaned.substr(0, end + 1);
         }
 
-        // Ensure no internal changes to valid characters
         return cleaned;
     }
 
-
-}
 
 // Builds the chart of accounts by reading from a file
 void ForestTree::buildFromFile(const std::string &filename) {

@@ -91,9 +91,8 @@ istream &operator>>(istream &in, Transaction &transaction) {
 
 // Overloaded output operator: Writes transaction details to the output stream
 ostream &operator<<(ostream &out, const Transaction &transaction) {
-    out << "Transaction ID: " << transaction.transactionID << "\n"
-        << "Amount: " << transaction.amount << "\n"
-        << "Type: " << (transaction.debitOrCredit == 'D' ? "Debit" : "Credit") << "\n"
-        << "Related Account: " << transaction.relatedAccount;
+    out <<"\n"<< "- Transaction ID: " << transaction.transactionID << "\n"
+        << "- Amount: " << transaction.amount << "\n"
+        << "- Type: " << (transaction.debitOrCredit == 'D' ? "Debit" : "Credit");
     return out;
 }

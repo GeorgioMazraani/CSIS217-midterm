@@ -7,8 +7,8 @@
 using namespace std;
 
 // Predefined file paths for loading and saving account data
-const string ORIGINAL_FILE = "C:\\Users\\lucas\\CLionProjects\\untitled\\accountswithspace.txt";
-const string UPDATED_FILE = "C:\\Users\\lucas\\CLionProjects\\untitled\\accountswithspace2.txt";
+const string ORIGINAL_FILE = "C:\\Users\\User\\OneDrive\\Desktop\\uob\\CSIS217-midterm\\CSIS217-midterm\\accountswithspace.txt";
+const string UPDATED_FILE = "C:\\Users\\User\\OneDrive\\Desktop\\uob\\CSIS217-midterm\\CSIS217-midterm\\accountswithspace2.txt";
 
 // Displays the main menu to the user
 void displayMenu() {
@@ -106,95 +106,164 @@ int main() {
 
             case 2: { // Remove an account
                 int accountNumber;
-
                 cout << "Enter the account number to remove: ";
-                cin >> accountNumber;
 
-                try {
-                    forestTree.removeAccount(accountNumber);
-                    cout << "Account removed successfully." << endl;
-                } catch (const std::exception &e) {
-                    cout << "Error removing account: " << e.what() << endl;
+                // Attempt to read an integer
+                if (cin >> accountNumber) {
+                    // Check if the number is within the valid range
+                    if (accountNumber >= 0 && accountNumber <= 99999) {
+                        try {
+                            // Attempt to remove the account
+                            forestTree.removeAccount(accountNumber);
+                            cout << "Account removed successfully." << endl;
+                        } catch (const std::exception &e) {
+                            // Handle any exceptions thrown during removal
+                            cout << "Error removing account: " << e.what() << endl;
+                        }
+                    } else {
+                        cout << "Error: Account number must be between 0 and 99999." << endl;
+                    }
+                } else {
+                    // Clear the error state and ignore invalid input
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Error: Invalid input. Please enter a numeric account number." << endl;
                 }
+
                 break;
             }
 
             case 3: { // Add a transaction to an account
                 int accountNumber;
                 double amount;
+                string typeInput;
                 char type;
 
                 cout << "Enter account number: ";
-                cin >> accountNumber;
 
-                cout << "Enter transaction amount: ";
-                if (!(cin >> amount)) { // Validate numeric input for amount
-                    cout << "Error: Invalid transaction amount. Please enter a number." << endl;
-                    cin.clear(); // Clear the error flag
-                    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore invalid input
-                    break;
-                }
+                // Attempt to read an integer for the account number
+                if (cin >> accountNumber) {
+                    // Validate the account number range
+                    if (accountNumber >= 0 && accountNumber <= 99999) {
+                        cout << "Enter transaction amount: ";
 
-                cout << "Enter type ('D' for Debit, 'C' for Credit): ";
-                cin >> type;
+                        // Validate numeric input for the amount
+                        if (cin >> amount) {
+                            cout << "Enter type ('D' for Debit, 'C' for Credit): ";
+                            cin >> typeInput;
 
-                // Convert type to uppercase to handle case-insensitivity
-                type = toupper(type);
+                            // Convert input to lowercase for easier comparison
+                            for (auto &c : typeInput) c = tolower(c);
 
-                // Validate the transaction type
-                if (type != 'D' && type != 'C') {
-                    cout << "Error: Invalid transaction type. Please enter 'D' for Debit or 'C' for Credit." << endl;
-                    break;
-                }
+                            // Validate and process the transaction type
+                            if (typeInput == "d" || typeInput == "debit") {
+                                type = 'D';
+                            } else if (typeInput == "c" || typeInput == "credit") {
+                                type = 'C';
+                            } else {
+                                cout << "Error: Invalid transaction type. Please enter 'D' for Debit, 'C' for Credit, or the full words 'Debit' or 'Credit'." << endl;
+                                break;
+                            }
 
-                try {
-                    // Create a new transaction and automatically assign an ID
-                    forestTree.addTransaction(accountNumber, Transaction(amount, type));
-                    cout << "Transaction added successfully." << endl;
-                } catch (const std::exception &e) {
-                    cout << "Error: " << e.what() << endl;
+                            try {
+                                // Create a new transaction and automatically assign an ID
+                                forestTree.addTransaction(accountNumber, Transaction(amount, type));
+                                cout << "Transaction added successfully." << endl;
+                            } catch (const std::exception &e) {
+                                // Handle exceptions and display the error message
+                                cout << "Error: " << e.what() << endl;
+                            }
+                        } else {
+                            // Handle invalid input for the transaction amount
+                            cin.clear();
+                            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            cout << "Error: Invalid transaction amount. Please enter a number." << endl;
+                        }
+                    } else {
+                        cout << "Error: Account number must be between 0 and 99999." << endl;
+                    }
+                } else {
+                    // Handle invalid input for the account number
+                    cin.clear();
+                    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cout << "Error: Invalid input. Please enter a numeric account number." << endl;
                 }
 
                 break;
             }
+
+
 
             case 4: { // Remove a transaction from an account
                 int accountNumber, transactionID;
 
                 cout << "Enter account number: ";
-                cin >> accountNumber;
-                cout << "Enter transaction ID: ";
-                cin >> transactionID;
 
-                try {
-                    forestTree.removeTransaction(accountNumber, transactionID);
-                    cout << "Transaction removed successfully." << endl;
-                } catch (const std::exception &e) {
-                    cout << "Error: " << e.what() << endl; // Display the error message using cout
+                // Attempt to read an integer for the account number
+                if (cin >> accountNumber) {
+                    // Validate the account number range
+                    if (accountNumber >= 0 && accountNumber <= 99999) {
+                        cout << "Enter transaction ID: ";
+
+                        // Attempt to read an integer for the transaction ID
+                        if (cin >> transactionID) {
+                            try {
+                                // Attempt to remove the transaction
+                                forestTree.removeTransaction(accountNumber, transactionID);
+                                cout << "Transaction removed successfully." << endl;
+                            } catch (const std::exception &e) {
+                                // Handle exceptions and display the error message
+                                cout << "Error: " << e.what() << endl;
+                            }
+                        } else {
+                            // Handle invalid input for the transaction ID
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                            cout << "Error: Invalid input. Please enter a numeric transaction ID." << endl;
+                        }
+                    } else {
+                        cout << "Error: Account number must be between 0 and 99999." << endl;
+                    }
+                } else {
+                    // Handle invalid input for the account number
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Error: Invalid input. Please enter a numeric account number." << endl;
                 }
+
                 break;
             }
+
 
             case 5: { // Search for an account by number
                 int accountNumber;
-
                 cout << "Enter the account number to search for: ";
-                cin >> accountNumber;
-                while (!(cin >> accountNumber)) {
+
+                // Attempt to read an integer
+                if (cin >> accountNumber) {
+                    // Check if the number is within the valid range
+                    if (accountNumber >= 0 && accountNumber <= 99999) {
+                        // Perform the account search
+                        Account *account = forestTree.searchAccount(accountNumber);
+                        if (account) {
+                            cout << "Account found:" << endl;
+                            cout << *account << endl;
+                        } else {
+                            cout << "Account not found." << endl;
+                        }
+                    } else {
+                        cout << "Error: Account number must be between 0 and 99999." << endl;
+                    }
+                } else {
+                    // Clear the error state and ignore invalid input
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "Invalid input. Please enter a valid account number: ";
+                    cout << "Error: Invalid input. Please enter a numeric account number." << endl;
                 }
 
-                Account *account = forestTree.searchAccount(accountNumber);
-                if (account) {
-                    cout << "Account found:" << endl;
-                    cout << *account << endl;
-                } else {
-                    cout << "Account not found." << endl;
-                }
                 break;
             }
+
             case 6: { // Print the chart of accounts to a temporary file and display it
                 try {
                     string tempFile = "current_chart_of_accounts.txt";

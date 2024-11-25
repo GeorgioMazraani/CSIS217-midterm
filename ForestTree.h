@@ -48,6 +48,9 @@ private:
     -----------------------------------------------------------------------*/
     void deleteTree(Account *node);
 
+    int findParentNumber(int accountNumber) const;
+    std::string cleanDescription(const std::string& desc) const;
+    void printTreeRecursive(Account *account, std::ofstream &file, int indent);
 public:
     /***** Constructor *****/
     /*------------------------------------------------------------------------
@@ -155,7 +158,7 @@ public:
       Precondition:  A valid account pointer, file stream, and indentation level are provided.
       Post-condition: The tree structure is recursively written to the file.
     -----------------------------------------------------------------------*/
-    void printTreeRecursive(Account *account, std::ofstream &file, int indent);
+
 };
 
 #endif // FORESTTREE_H
