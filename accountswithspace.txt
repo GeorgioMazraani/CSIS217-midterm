@@ -157,8 +157,6 @@
 21151 "Industrial properties (A, B)" 0
 21155 "Administrative and commercial properties (A, B)" 0
 21158 Other properties 0
-211581 "for business activities (A, B)" 0
-211588 "for non business activities (A, B)" 0
 2116 Fixed asset order account 0
 212 Land fixtures and installations 0
 213 Constructions 0
@@ -166,14 +164,10 @@
 21311 "Industrial properties (A, B)" 0
 21315 "Administrative and commercial properties (A, B)" 0
 21318 Other properties 0
-213181 "for business activities (A, B)" 0
-213188 "for non business activities (A, B)" 0
 2135 "Building installations, fittings and fixtures" 0
 21351 "Industrial properties (A, B)" 0
 21355 "Administrative and commercial properties (A, B)" 0
 21358 Other properties 0
-213581 "for business activities (A, B)" 0
-213588 "for non business activities (A, B)" 0
 2138 Infrastructure works 0
 21381 Roadways 0
 21382 Railways 0

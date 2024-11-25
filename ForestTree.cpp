@@ -222,23 +222,35 @@ void ForestTree::buildFromFile(const std::string &filename) {
 
 // Adds an account to the ForestTree
 void ForestTree::addAccount(int accountNumber, const std::string &description, double initialBalance) {
-    // Check if the account already exists
-    if (accountMap.find(accountNumber) != accountMap.end()) {
-        throw std::invalid_argument("Account number already exists: " + std::to_string(accountNumber));
+    try {
+
+        // Validate the account number range (1 to 5 digits)
+        if (accountNumber < 1 || accountNumber > 99999) {
+            throw std::invalid_argument("Invalid account number: " + std::to_string(accountNumber) +
+                                        ". Account number must be between 1 and 5 digits.");
+        }
+        // Check if the account already exists
+        if (accountMap.find(accountNumber) != accountMap.end()) {
+            throw std::invalid_argument("Account number already exists: " + std::to_string(accountNumber));
+        }
+
+        // Create a new account
+        Account *newAccount = new Account(accountNumber, description, initialBalance);
+        int parentNumber = findParentNumber(accountNumber);
+
+        // Set the parent account if it exists
+        if (parentNumber > 0 && accountMap.find(parentNumber) != accountMap.end()) {
+            newAccount->setParent(accountMap[parentNumber]);
+        }
+
+        // Add the new account to the map
+        accountMap[accountNumber] = newAccount;
+    } catch (const std::exception &e) {
+        // Catch any errors and rethrow to be handled in the calling function
+        throw;
     }
-
-    // Create a new account
-    Account *newAccount = new Account(accountNumber, description, initialBalance);
-    int parentNumber = findParentNumber(accountNumber);
-
-    // Set the parent account if it exists
-    if (parentNumber > 0 && accountMap.find(parentNumber) != accountMap.end()) {
-        newAccount->setParent(accountMap[parentNumber]);
-    }
-
-    // Add the new account to the map
-    accountMap[accountNumber] = newAccount;
 }
+
 
 
 // Removes an account by its number
@@ -272,8 +284,13 @@ void ForestTree::removeTransaction(int accountNumber, int transactionID) {
         throw std::invalid_argument("Account not found");
     }
 
-    account->removeTransaction(transactionID);
+    try {
+        account->removeTransaction(transactionID);
+    } catch (const std::exception &e) {
+        throw std::invalid_argument("Transaction not found for the given account.");
+    }
 }
+
 
 // Searches for an account by its number
 Account *ForestTree::searchAccount(int accountNumber) {
