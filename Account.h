@@ -18,8 +18,10 @@
                          and associated transactions.
     Setters:             Allows modification of account relationships (e.g., parent).
     updateBalance:       Updates the account's balance by a specified amount.
-    addTransaction:      Adds a new transaction to the account.
-    removeTransaction:   Removes a transaction from the account by ID.
+    addTransaction:      Adds a new transaction to the account and propagates
+                         balance adjustments to parent accounts.
+    removeTransaction:   Removes a transaction from the account by ID and
+                         adjusts balances for the account and parent accounts.
     Overloaded Operators: Implements input and output stream operations for Accounts.
     saveToFile:          Saves account details to a file.
 
@@ -28,23 +30,26 @@
 
   Class Invariant:
     1. Each account has a unique account number.
-    2. Transactions are stored as pointers to avoid incomplete type issues.
+    2. Transactions are stored as pointers to allow dynamic allocation.
     3. The parent pointer is either null or points to a valid Account object.
     4. The balance reflects the sum of the initial balance and all transaction amounts.
+    5. The nextTransactionID ensures all transactions for an account have unique IDs.
 ----------------------------------------------------------------------------**/
 
 #include <iostream>
 #include <string>
 #include <vector>
 
+using namespace std;
+
 class Transaction; // Forward declaration
 
 class Account {
 private:
     int accountNumber;                    // Unique account number
-    std::string description;              // Account description
+    string description;                   // Account description
     double balance;                       // Current account balance
-    std::vector<Transaction *> transactions; // List of transactions for the account
+    vector<Transaction *> transactions;   // List of transactions for the account
     Account *parent;                      // Pointer to the parent account (if any)
     int nextTransactionID;                // Tracks the next transaction ID for this account
 
@@ -67,20 +72,22 @@ public:
                      Initial balance defaults to 0.0 if not specified.
       Post-condition: An Account object is created with the specified attributes.
     -----------------------------------------------------------------------*/
-    Account(int accountNumber, const std::string &description, double initialBalance = 0.0);
+    Account(int accountNumber, const string &description, double initialBalance = 0.0);
 
     /***** Copy Constructor *****/
     /*------------------------------------------------------------------------
-      Creates a deep copy of an existing Account object.
+      Creates a deep copy of an existing Account object, including transactions.
 
       Precondition:  An Account object is provided.
-      Post-condition: A new Account object is created as a copy of the given Account.
+      Post-condition: A new Account object is created as a copy of the given Account,
+                      with a deep copy of its transactions.
     -----------------------------------------------------------------------*/
     Account(const Account &other);
 
     /***** Assignment Operator *****/
     /*------------------------------------------------------------------------
-      Assigns one Account object to another, performing a deep copy of attributes.
+      Assigns one Account object to another, performing a deep copy of attributes
+      and transactions.
 
       Precondition:  An existing Account object is provided.
       Post-condition: The current Account object is updated with the values
@@ -106,13 +113,13 @@ public:
     -----------------------------------------------------------------------*/
     int getAccountNumber() const;
 
-    const std::string &getDescription() const;
+    const string &getDescription() const;
 
     double getBalance() const;
 
     Account *getParent() const;
 
-    const std::vector<Transaction *> &getTransactions() const;
+    const vector<Transaction *> &getTransactions() const;
 
     /***** Setters *****/
     /*------------------------------------------------------------------------
@@ -134,18 +141,22 @@ public:
 
     /***** Transaction Management *****/
     /*------------------------------------------------------------------------
-      Adds a transaction to the account.
+      Adds a transaction to the account and propagates balance adjustments
+      to this account and its parent accounts.
 
-      Precondition:  A valid Transaction object is provided.
-      Post-condition: The transaction is added to the account's transaction list.
+      Precondition:  A valid numeric amount and transaction type ('D' or 'C') are provided.
+      Post-condition: The transaction is added to the account's transaction list,
+                      and balances are adjusted accordingly.
     -----------------------------------------------------------------------*/
     void addTransaction(double amount, char debitOrCredit);
 
     /*------------------------------------------------------------------------
-      Removes a transaction from the account by its ID.
+      Removes a transaction from the account by its ID and adjusts balances
+      for this account and parent accounts.
 
       Precondition:  A valid transaction ID is provided.
-      Post-condition: The transaction is removed from the account if it exists.
+      Post-condition: The transaction is removed from the account, and balances
+                      are adjusted accordingly.
     -----------------------------------------------------------------------*/
     void removeTransaction(int transactionID);
 
@@ -155,19 +166,13 @@ public:
 
       Precondition:  A valid input or output stream is provided.
       Post-condition: Account data is read from or written to the stream.
+
+      Note: Input requires account number, description, and initial balance.
     -----------------------------------------------------------------------*/
-    friend std::istream &operator>>(std::istream &in, Account &account);
+    friend istream &operator>>(istream &in, Account &account);
 
-    friend std::ostream &operator<<(std::ostream &out, const Account &account);
+    friend ostream &operator<<(ostream &out, const Account &account);
 
-    /***** Save to File *****/
-    /*------------------------------------------------------------------------
-      Saves the account details to a specified file.
-
-      Precondition:  A valid filename is provided.
-      Post-condition: Account details are written to the file in a readable format.
-    -----------------------------------------------------------------------*/
-    void saveToFile(const std::string &filename) const;
 };
 
 #endif // ACCOUNT_H

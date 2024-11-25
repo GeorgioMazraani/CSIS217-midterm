@@ -32,26 +32,6 @@ char Transaction::getDebitOrCredit() const {
     return debitOrCredit;
 }
 
-// Returns the related account associated with this transaction
-const string &Transaction::getRelatedAccount() const {
-    return relatedAccount;
-}
-
-// Sets the transaction amount
-void Transaction::setAmount(double amt) {
-    amount = amt;
-}
-
-// Sets the transaction type ('D' or 'C')
-void Transaction::setDebitOrCredit(char dc) {
-    debitOrCredit = dc;
-}
-
-// Sets the related account for the transaction
-void Transaction::setRelatedAccount(const string &account) {
-    relatedAccount = account;
-}
-
 // Applies the transaction to the given account and its parent accounts
 void Transaction::applyTransaction(Account *account) const {
     if (!account) return;

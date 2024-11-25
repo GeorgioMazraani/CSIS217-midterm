@@ -67,7 +67,7 @@ void Account::updateBalance(double amount) {
 void Account::addTransaction(double amount, char debitOrCredit) {
     // Validate the transaction type
     if (debitOrCredit != 'D' && debitOrCredit != 'C') {
-        throw std::invalid_argument("Invalid transaction type. Use 'D' for Debit or 'C' for Credit.");
+        throw invalid_argument("Invalid transaction type. Use 'D' for Debit or 'C' for Credit.");
     }
 
     // Create a new transaction with this account's next transaction ID
@@ -77,7 +77,7 @@ void Account::addTransaction(double amount, char debitOrCredit) {
     // Validate the transaction
     if (!transaction->isValid(this)) {
         delete transaction; // Clean up if invalid
-        throw std::invalid_argument("Transaction is invalid: Insufficient balance for credit transaction.");
+        throw invalid_argument("Transaction is invalid: Insufficient balance for credit transaction.");
     }
 
     // Add the transaction to the list
@@ -146,22 +146,19 @@ ostream &operator<<(ostream &out, const Account &account) {
     out << account.accountNumber << " ";
 
     // Ensure the description is padded or truncated to a fixed width
-    std::string description = account.description.substr(0, 80); // Truncate if too long
+    string description = account.description.substr(0, 80); // Truncate if too long
     if (description.length() < 80) {  // Pad with spaces if too short
         description.append(80 - description.length(), ' ');
     }
     out << description;
 
     // Format the balance with fixed precision
-    out << " " << std::fixed << std::setprecision(2) << account.balance << "\n";
+    out << " " << fixed << setprecision(2) << account.balance << "\n";
 
     // Output the transactions
-    int transactionNumber = 1;
     for (const Transaction *transaction : account.transactions) {
-        out << "\tTransaction " << transactionNumber++ << ": "
-            << *transaction << "\n"; // Assuming Transaction has operator<< defined
+        out<< *transaction << "\n"; // Assuming Transaction has operator<< defined
     }
-
     return out;
 }
 
@@ -200,20 +197,4 @@ Account &Account::operator=(const Account &other) {
     return *this;
 }
 
-// Saves the account details and its transactions to a file
-void Account::saveToFile(const string &filename) const {
-    ofstream file(filename, ios::app); // Open the file in append mode
-    if (!file) {
-        throw runtime_error("Failed to open file for saving.");
-    }
 
-    file << setw(6) << accountNumber << " "
-         << std::quoted(description) << " "
-         << fixed << setprecision(2) << balance << "\n";
-
-    int transactionNumber = 1;
-    for (const Transaction *transaction : transactions) {
-        file << "  Transaction " << transactionNumber++ << ": "
-             << *transaction << "\n";
-    }
-}

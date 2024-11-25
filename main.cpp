@@ -7,8 +7,8 @@
 using namespace std;
 
 // Predefined file paths for loading and saving account data
-const string ORIGINAL_FILE = "C:\\Users\\User\\OneDrive\\Desktop\\uob\\CSIS217-midterm\\CSIS217-midterm\\accountswithspace.txt";
-const string UPDATED_FILE = "C:\\Users\\User\\OneDrive\\Desktop\\uob\\CSIS217-midterm\\CSIS217-midterm\\accountswithspace2.txt";
+const string ORIGINAL_FILE = "C:\\Users\\Personal\\CLionProjects\\ADSProject\\CSIS217-midterm\\accountswithspace.txt";
+const string UPDATED_FILE = "C:\\Users\\Personal\\CLionProjects\\ADSProject\\CSIS217-midterm\\accountswithspace2.txt";
 
 // Displays the main menu to the user
 void displayMenu() {
@@ -65,14 +65,14 @@ int main() {
         switch (choice) {
             case 1: { // Add a new account
                 int accountNumber;
-                std::string description;
+                string description;
                 double initialBalance;
 
                 cout << "Enter account number: ";
                 if (!(cin >> accountNumber)) { // Validate numeric input
                     cout << "Error: Invalid account number. Please enter a valid number between 1 and 5 digits." << endl;
                     cin.clear(); // Clear the error flag
-                    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore the invalid input
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore the invalid input
                     break;
                 }
 
@@ -89,14 +89,14 @@ int main() {
                 if (!(cin >> initialBalance)) { // Validate numeric input for initial balance
                     cout << "Error: Invalid initial balance. Please enter a valid number." << endl;
                     cin.clear(); // Clear the error flag
-                    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore the invalid input
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignore the invalid input
                     break;
                 }
 
                 try {
                     forestTree.addAccount(accountNumber, description, initialBalance);
                     cout << "Account added successfully." << endl;
-                } catch (const std::exception &e) {
+                } catch (const exception &e) {
                     cout << "Error adding account: " << e.what() << endl;
                 }
 
@@ -116,7 +116,7 @@ int main() {
                             // Attempt to remove the account
                             forestTree.removeAccount(accountNumber);
                             cout << "Account removed successfully." << endl;
-                        } catch (const std::exception &e) {
+                        } catch (const exception &e) {
                             // Handle any exceptions thrown during removal
                             cout << "Error removing account: " << e.what() << endl;
                         }
@@ -169,14 +169,14 @@ int main() {
                                 // Create a new transaction and automatically assign an ID
                                 forestTree.addTransaction(accountNumber, Transaction(amount, type));
                                 cout << "Transaction added successfully." << endl;
-                            } catch (const std::exception &e) {
+                            } catch (const exception &e) {
                                 // Handle exceptions and display the error message
                                 cout << "Error: " << e.what() << endl;
                             }
                         } else {
                             // Handle invalid input for the transaction amount
                             cin.clear();
-                            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
                             cout << "Error: Invalid transaction amount. Please enter a number." << endl;
                         }
                     } else {
@@ -185,7 +185,7 @@ int main() {
                 } else {
                     // Handle invalid input for the account number
                     cin.clear();
-                    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     cout << "Error: Invalid input. Please enter a numeric account number." << endl;
                 }
 
@@ -211,7 +211,7 @@ int main() {
                                 // Attempt to remove the transaction
                                 forestTree.removeTransaction(accountNumber, transactionID);
                                 cout << "Transaction removed successfully." << endl;
-                            } catch (const std::exception &e) {
+                            } catch (const exception &e) {
                                 // Handle exceptions and display the error message
                                 cout << "Error: " << e.what() << endl;
                             }
