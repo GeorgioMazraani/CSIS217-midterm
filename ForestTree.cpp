@@ -31,9 +31,9 @@ void ForestTree::initialize() {
 }
 
 // Helper namespace for utility functions used in ForestTree operations
-namespace {
+
     // Determines the parent account number based on the current account number
-    int findParentNumber(int accountNumber) {
+    int ForestTree::findParentNumber(int accountNumber) const {
         std::string numStr = std::to_string(accountNumber);
 
         // If the account number is single-digit or invalid, return 0 (no parent)
@@ -51,14 +51,8 @@ namespace {
     }
 
 
-    // Checks if a string is numeric
-    bool isNumeric(const std::string &str) {
-        return !str.empty() && str.find_first_not_of("0123456789") == std::string::npos;
-    }
-
     // Cleans account description by removing unwanted characters and trimming spaces
-    std::string cleanDescription(const std::string &desc) {
-        // Handle empty strings
+    std::string ForestTree::cleanDescription(const std::string& desc) const {
         if (desc.empty()) {
             return "";
         }
@@ -77,12 +71,9 @@ namespace {
             cleaned = cleaned.substr(0, end + 1);
         }
 
-        // Ensure no internal changes to valid characters
         return cleaned;
     }
 
-
-}
 
 // Builds the chart of accounts by reading from a file
 void ForestTree::buildFromFile(const std::string &filename) {
@@ -107,7 +98,9 @@ void ForestTree::buildFromFile(const std::string &filename) {
             if (readingDescription) { // Finalize the previous account
                 description = cleanDescription(description);
                 try {
-                    addAccount(accountNumber, description, balance);
+                    if (accountMap.find(accountNumber) == accountMap.end()) {
+                        addAccount(accountNumber, description, balance);
+                    }
                 } catch (const std::exception &e) {
                     std::cerr << "Error adding account " << accountNumber << ": " << e.what() << std::endl;
                 }
@@ -141,80 +134,63 @@ void ForestTree::buildFromFile(const std::string &filename) {
             }
 
             readingDescription = true;
-        } else if (line.find("Transaction ID:") != std::string::npos) { // Transaction line
-            try {
-                // Debug: Print the full line being processed
-                std::cout << "Processing line: " << line << std::endl;
+        } else if (line.find("Transaction ID:") != std::string::npos) { // Transaction lines
+            while (line.find("Transaction ID:") != std::string::npos) {
+                try {
+                    // Extract transaction details
+                    size_t idPos = line.find("Transaction ID:");
+                    size_t amountPos = line.find("Amount:");
+                    size_t typePos = line.find("Type:");
 
-                // Extract positions of keys
-                size_t idPos = line.find("Transaction ID:");
-                size_t amountPos = line.find("Amount:");
-                size_t typePos = line.find("Type:");
+                    if (idPos != std::string::npos && amountPos != std::string::npos && typePos != std::string::npos) {
+                        std::string idStr = line.substr(idPos + 14, amountPos - (idPos + 14));
+                        idStr.erase(idStr.find_last_not_of(" ,:\n\r\t") + 1); // Trim trailing characters
+                        idStr.erase(0, idStr.find_first_not_of(" ,:\n\r\t")); // Trim leading characters
 
-                // Debug: Print positions of keys
-                std::cout << "idPos: " << idPos << ", amountPos: " << amountPos << ", typePos: " << typePos << std::endl;
+                        int transactionID = std::stoi(idStr); // Convert to integer
 
-                // Ensure all keys exist in the line
-                if (idPos != std::string::npos && amountPos != std::string::npos && typePos != std::string::npos) {
-                    // Parse Transaction ID
-                    std::string idStr = line.substr(idPos + 14, amountPos - (idPos + 14)); // Extract substring
-                    idStr.erase(idStr.find_last_not_of(" ,:\n\r\t") + 1);                  // Trim unwanted characters
-                    idStr.erase(0, idStr.find_first_not_of(" ,:\n\r\t"));                 // Trim leading characters
+                        std::string amountStr = line.substr(amountPos + 7, typePos - (amountPos + 7));
+                        amountStr.erase(amountStr.find_last_not_of(" \n\r\t") + 1); // Trim trailing spaces
+                        amountStr.erase(0, amountStr.find_first_not_of(" \n\r\t")); // Trim leading spaces
 
-                    // Debug: Print extracted Transaction ID after cleanup
-                    std::cout << "Extracted Transaction ID: " << idStr << std::endl;
+                        double transactionAmount = std::stod(amountStr); // Convert to double
 
-                    int transactionID = std::stoi(idStr); // Convert to integer
+                        std::string typeStr = line.substr(typePos + 5);
+                        typeStr.erase(typeStr.find_last_not_of(" \n\r\t") + 1); // Trim trailing spaces
+                        typeStr.erase(0, typeStr.find_first_not_of(" \n\r\t")); // Trim leading spaces
 
-                    // Parse Transaction Amount
-                    std::string amountStr = line.substr(amountPos + 7, typePos - (amountPos + 7));
-                    amountStr.erase(amountStr.find_last_not_of(" \n\r\t") + 1); // Trim trailing spaces
-                    amountStr.erase(0, amountStr.find_first_not_of(" \n\r\t")); // Trim leading spaces
+                        char transactionType = (typeStr == "Debit") ? 'D' : (typeStr == "Credit" ? 'C' : '\0');
 
-                    // Debug: Print extracted Amount
-                    std::cout << "Extracted Amount: " << amountStr << std::endl;
+                        if (transactionType == '\0') {
+                            throw std::invalid_argument("Invalid transaction type: " + typeStr);
+                        }
 
-                    double transactionAmount = std::stod(amountStr); // Convert to double
+                        // Ensure the account exists before adding the transaction
+                        Account *account = searchAccount(accountNumber);
+                        if (!account) {
+                            addAccount(accountNumber, description, 0);
+                            account = searchAccount(accountNumber);
+                        }
 
-                    // Parse Transaction Type
-                    std::string typeStr = line.substr(typePos + 5);
-                    typeStr.erase(typeStr.find_last_not_of(" \n\r\t") + 1); // Trim trailing spaces
-                    typeStr.erase(0, typeStr.find_first_not_of(" \n\r\t")); // Trim leading spaces
-
-                    // Debug: Print extracted Type
-                    std::cout << "Extracted Type: " << typeStr << std::endl;
-
-                    char transactionType = (typeStr == "Debit") ? 'D' : (typeStr == "Credit" ? 'C' : '\0');
-
-                    // Validate Transaction Type
-                    if (transactionType == '\0') {
-                        throw std::invalid_argument("Invalid transaction type: " + typeStr);
-                    }
-
-                    // Debug: Print parsed transaction details
-                    std::cout << "Transaction ID: " << transactionID
-                              << ", Amount: " << transactionAmount
-                              << ", Type: " << transactionType << std::endl;
-
-                    // Add transaction to the account
-                    Account *account = searchAccount(138);
-                    if (account) {
+                        // Add the transaction
                         Transaction transaction(transactionAmount, transactionType);
                         transaction.setTransactionID(transactionID);
                         account->addTransaction(transaction.getAmount(), transaction.getDebitOrCredit());
-                        std::cout << "Transaction added to account: " << accountNumber << std::endl;
                     } else {
-                        std::cerr << "Account not found for transaction: " << line << std::endl;
+                        std::cerr << "Malformed transaction line: " << line << std::endl;
                     }
-                } else {
-                    std::cerr << "Malformed transaction line: " << line << std::endl;
+                } catch (const std::exception &e) {
+                    std::cerr << "Error parsing transaction for account " << accountNumber << ": " << e.what() << std::endl;
                 }
-            } catch (const std::exception &e) {
-                std::cerr << "Error parsing transaction for account " << accountNumber << ": " << e.what() << std::endl;
-            }
-        }
 
-        else if (readingDescription) { // Append additional description lines
+                if (!std::getline(file, line)) break; // Read the next line if available
+            }
+
+            // Check if the next line starts a new account
+            if (!line.empty() && std::isdigit(line[0])) {
+                continue; // Process the next account line in the main loop
+            }
+        } else if (readingDescription) { // Append additional description lines
             description += " " + line;
         }
     }
@@ -223,33 +199,49 @@ void ForestTree::buildFromFile(const std::string &filename) {
     if (readingDescription) {
         description = cleanDescription(description);
         try {
-            addAccount(accountNumber, description, balance);
+            if (accountMap.find(accountNumber) == accountMap.end()) {
+                addAccount(accountNumber, description, balance);
+            }
         } catch (const std::exception &e) {
             std::cerr << "Error adding account " << accountNumber << ": " << e.what() << std::endl;
-            }
         }
+    }
 }
+
+
 
 
 // Adds an account to the ForestTree
 void ForestTree::addAccount(int accountNumber, const std::string &description, double initialBalance) {
-    // Check if the account already exists
-    if (accountMap.find(accountNumber) != accountMap.end()) {
-        throw std::invalid_argument("Account number already exists: " + std::to_string(accountNumber));
+    try {
+
+        // Validate the account number range (1 to 5 digits)
+        if (accountNumber < 1 || accountNumber > 99999) {
+            throw std::invalid_argument("Invalid account number: " + std::to_string(accountNumber) +
+                                        ". Account number must be between 1 and 5 digits.");
+        }
+        // Check if the account already exists
+        if (accountMap.find(accountNumber) != accountMap.end()) {
+            throw std::invalid_argument("Account number already exists: " + std::to_string(accountNumber));
+        }
+
+        // Create a new account
+        Account *newAccount = new Account(accountNumber, description, initialBalance);
+        int parentNumber = findParentNumber(accountNumber);
+
+        // Set the parent account if it exists
+        if (parentNumber > 0 && accountMap.find(parentNumber) != accountMap.end()) {
+            newAccount->setParent(accountMap[parentNumber]);
+        }
+
+        // Add the new account to the map
+        accountMap[accountNumber] = newAccount;
+    } catch (const std::exception &e) {
+        // Catch any errors and rethrow to be handled in the calling function
+        throw;
     }
-
-    // Create a new account
-    Account *newAccount = new Account(accountNumber, description, initialBalance);
-    int parentNumber = findParentNumber(accountNumber);
-
-    // Set the parent account if it exists
-    if (parentNumber > 0 && accountMap.find(parentNumber) != accountMap.end()) {
-        newAccount->setParent(accountMap[parentNumber]);
-    }
-
-    // Add the new account to the map
-    accountMap[accountNumber] = newAccount;
 }
+
 
 
 // Removes an account by its number
@@ -283,8 +275,13 @@ void ForestTree::removeTransaction(int accountNumber, int transactionID) {
         throw std::invalid_argument("Account not found");
     }
 
-    account->removeTransaction(transactionID);
+    try {
+        account->removeTransaction(transactionID);
+    } catch (const std::exception &e) {
+        throw std::invalid_argument("Transaction not found for the given account.");
+    }
 }
+
 
 // Searches for an account by its number
 Account *ForestTree::searchAccount(int accountNumber) {
@@ -306,7 +303,6 @@ void ForestTree::printTree(const std::string &filename) {
     }
 }
 
-// Recursively prints an account and its children
 void ForestTree::printTreeRecursive(Account *account, std::ofstream &file, int indent) {
     if (!account) return;
 
@@ -317,21 +313,26 @@ void ForestTree::printTreeRecursive(Account *account, std::ofstream &file, int i
          << std::fixed << std::setprecision(2) << account->getBalance() << "\n";
 
     // Print transactions for this account
-    for (const Transaction *transaction: account->getTransactions()) {
+    for (const Transaction *transaction : account->getTransactions()) {
         file << std::string((indent + 1) * 2, ' ')  // Indent transactions more than account
              << "Transaction ID: " << transaction->getTransactionID() << ", "
              << "Amount: " << transaction->getAmount() << ", "
              << "Type: " << (transaction->getDebitOrCredit() == 'D' ? "Debit" : "Credit") << "\n";
+    }
 
+    // Add a blank line after transactions for better readability
+    if (!account->getTransactions().empty()) {
+        file << "\n";
     }
 
     // Recursively print child accounts
-    for (const auto &pair: accountMap) {
+    for (const auto &pair : accountMap) {
         if (pair.second->getParent() == account) {
             printTreeRecursive(pair.second, file, indent + 1);
         }
     }
 }
+
 
 
 // Prints the details of a specific account to a file

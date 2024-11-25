@@ -23,8 +23,8 @@ Account::~Account() {
 
 // Validates the account number to ensure it is within the acceptable range
 void Account::validateAccountNumber(int accountNumber) {
-    if (accountNumber <= 0 || accountNumber > 999999) {
-        throw invalid_argument("Account number must be between 1 and 999999.");
+    if (accountNumber <= 0 || accountNumber > 99999) {
+        throw invalid_argument("Account number must be between 1 and 99999.");
     }
 }
 
@@ -86,7 +86,6 @@ void Account::addTransaction(double amount, char debitOrCredit) {
     // Calculate the adjustment based on the transaction type
     double adjustment = (debitOrCredit == 'D') ? amount : -amount;
 
-
     // Propagate the balance adjustment to this account and its parent accounts
     Account *current = this;
     while (current) {
@@ -115,6 +114,15 @@ void Account::removeTransaction(int transactionID) {
         // Delete the transaction and remove it from the list
         delete *it;
         transactions.erase(it);
+
+        // Reassign transaction IDs to ensure they are sequential
+        int newID = 1;
+        for (Transaction *transaction : transactions) {
+            transaction->setTransactionID(newID++);
+        }
+
+        // Update the nextTransactionID counter
+        nextTransactionID = newID;
     } else {
         throw invalid_argument("Transaction not found.");
     }
