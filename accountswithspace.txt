@@ -284,7 +284,6 @@
 2908 Other intangible fixed assets 0
 29081 Provisions for impairment of merger deficit on intangible assets 0
 291 Provisions for impairment of tangible fixed assets (same breakdown as  0
-29187 Provisions for impairment of concession fixed assets 0
 292 Provisions for impairment of concession fixed assets 0
 293 Provisions for impairment of fixed assets in progress 0
 2931 Tangible fixed assets in progress 0
@@ -301,7 +300,6 @@
 2974 Loans (same breakdown as account 274) 0
 2975 Deposits and sureties paid (same breakdown as account 275) 0
 2976 Other long-term receivables (same breakdown as account 276) 0
-29787 Provisions for impairment of merger deficit on financial assets 0
 3 INVENTORY AND WORK IN PROGRESS 0
 31 Raw materials (and supplies) 0
 311 Materials (or range) A 0
@@ -517,10 +515,6 @@
 4772 Decrease in debt 0
 4778 Differences offset by currency hedging 0
 478 Other suspense accounts 0
-47861 Valuation differences on derivative financial instruments - Assets 0
-47862 Valuation differences on tokens held - Assets 0
-47871 Valuation differences on derivative financial instruments -  0
-47872 Valuation differences on tokens held - Liabilities 0
 48 Accruals and deferrals 0
 481 Deferred expenses 0
 4816 Loan issuance costs 0

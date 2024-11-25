@@ -1,5 +1,5 @@
-1 EQUITY AND LIABILITIES         80.00
-  10 Capital and reserves           0.00
+1 EQUITY AND LIABILITIES         1200.00
+  10 Capital and reserves           1200.00
     101 Capital                        0.00
       1011 Subscribed capital - uncalled  0.00
       1012 "Subscribed capital - called-up, unpaid" 0.00
@@ -14,13 +14,16 @@
       1043 Contribution premiums          0.00
       1044 Premiums on conversion of bonds into shares 0.00
       1045 Share warrants                 0.00
-    105 Revaluation differences        0.00
+    105 Revaluation differences        1200.00
       1051 Special revaluation reserve    0.00
       1052 Non-mandatory revaluation difference 0.00
       1053 Revaluation reserve            0.00
       1055 Revaluation differences (other legal transactions) 0.00
       1057 Other revaluation differences in France 0.00
-      1058 Other revaluation differences in foreign countries 0.00
+      1058  Other revaluation differences in foreign countries 1100.00
+        Transaction ID: 1, Amount: 100.00, Type: Debit
+        Transaction ID: 2, Amount: 1000.00, Type: Debit
+
     106 Reserves                       0.00
       1061 Legal reserve                  0.00
         10611 Standard legal reserve         0.00
@@ -43,7 +46,7 @@
   12 Profit or loss for the financial year 0.00
     120 Profit for the financial year  0.00
     129 Loss for the financial year    0.00
-  13 Investment grants              80.00
+  13 Investment grants              0.00
     131 Equipment grants               0.00
       1311 State                          0.00
       1312 Regions                        0.00
@@ -53,10 +56,18 @@
       1316 State-owned enterprises        0.00
       1317 Private companies and organizations 0.00
       1318 Others                         0.00
-    138   Other investment grants (same breakdown as account 131) 40.00
-      Transaction ID: 1, Amount: 10.00, Type: Debit
-      Transaction ID: 2, Amount: 20.00, Type: Debit
-      Transaction ID: 3, Amount: 10.00, Type: Debit
+    138 Other investment grants (same breakdown as account 131) 0.00
+    139 Investment grants recorded in the income statement 0.00
+      1391 Equipment grants               0.00
+        13911 State                          0.00
+        13912 Regions                        0.00
+        13913 Departments                    0.00
+        13914 Municipalities                 0.00
+        13915 Public authorities             0.00
+        13916 State-owned enterprises        0.00
+        13917 Private companies and organizations 0.00
+        13918 Other                          0.00
+      1398 Other investment grants (same breakdown as account 1391) 0.00
   14 Regulated provisions           0.00
     142 Regulated provisions relating to fixed assets 0.00
       1423 Provisions for reconstitution of mining and petroleum deposits 0.00
@@ -1003,19 +1014,3 @@
   89 Balance sheet                  0.00
     890 Opening balance sheet          0.00
     891 Closing balance sheet          0.00
-1391 Equipment grants               0.00
-  13911 State                          0.00
-  13912 Regions                        0.00
-  13913 Departments                    0.00
-  13914 Municipalities                 0.00
-  13915 Public authorities             0.00
-  13916 State-owned enterprises        0.00
-  13917 Private companies and organizations 0.00
-  13918 Other                          0.00
-1398 Other investment grants (same breakdown as account 1391) 0.00
-29187 Provisions for impairment of concession fixed assets 0.00
-29787 Provisions for impairment of merger deficit on financial assets 0.00
-47861 Valuation differences on derivative financial instruments - Assets 0.00
-47862 Valuation differences on tokens held - Assets 0.00
-47871 Valuation differences on derivative financial instruments - 0.00
-47872 Valuation differences on tokens held - Liabilities 0.00
